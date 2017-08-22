@@ -19,8 +19,16 @@ function parseXML(xmlinput: String) {
   var the_dom = parser.parseFromString(xmlinput.toString(), "application/xml");
   var tripos = the_dom.getElementsByTagName('tripos')[0];
 
-  configVersion_field.value = <string> get_value(tripos, "configVersion");
-  developerKey_field.value = <string> get_value(tripos, "developers/developer/developerKey");
+  //configVersion_field.value = <string> get_value(tripos, "configVersion");
+  //developerKey_field.value = <string> get_value(tripos, "developers/developer/developerKey");
+
+  paths().split(" ").forEach( function(path) {
+    var checkpoints = path.split("/");
+    var element_name = checkpoints[checkpoints.length - 1];
+    var field = <HTMLInputElement> document.getElementById(element_name);
+
+    field.value = <string> get_value(tripos, path);
+  });
 }
 
 function get_value(tripos:Element, path: String): String {
@@ -29,7 +37,7 @@ function get_value(tripos:Element, path: String): String {
 
   checkpoints.forEach( function(cp) {
     location = location.getElementsByTagName(cp)[0];
-  })
+  });
 
   return location.textContent;
 }
