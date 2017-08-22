@@ -13,8 +13,12 @@ function parseXML(xmlinput) {
     var parser = new DOMParser();
     var the_dom = parser.parseFromString(xmlinput.toString(), "application/xml");
     var tripos = the_dom.getElementsByTagName('tripos')[0];
-    configVersion_field.value = get_value(tripos, "configVersion");
-    developerKey_field.value = get_value(tripos, "developers/developer/developerKey");
+    paths().split(" ").forEach(function (path) {
+        var checkpoints = path.split("/");
+        var element_name = checkpoints[checkpoints.length - 1];
+        var field = document.getElementById(element_name);
+        field.value = get_value(tripos, path);
+    });
 }
 function get_value(tripos, path) {
     var location = tripos;
@@ -23,5 +27,11 @@ function get_value(tripos, path) {
         location = location.getElementsByTagName(cp)[0];
     });
     return location.textContent;
+}
+function paths() {
+    return "\
+configVersion \
+developers/developer/developerKey\
+";
 }
 //# sourceMappingURL=main.js.map
