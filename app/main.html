@@ -1,31 +1,188 @@
+<!-- Name: TriPOS config tool
+Description: Import an xml triPOS config document, validates fields, 
+	and export to a new doc.
+Collaborators: Eva Goins, Will Hakes
+Date: 8/22/17-8/23/17 
+
+TODO: 
+  -- Re-organize so its formatting makes more sense, esp when it comes to checkboxes.
+  -- Collapsable forms for lanes
+  -- Remove Lane button per collapsable form
+  -- Fix the roll-over text for the tip options 
+-->
+
 <!DOCTYPE html>
 <html>
+<head>
+	<script src="scripts/main.js"></script>
+</head>
+
 <body>
 
-<h3>A demonstration of how to access a File Upload Button</h3>
+<h3>TriPOS Config File Tool</h3>
+<p>Browse to select your configuartion file, then click "Import".</p>
+<input type="file" id="myFile" oninput="myFunction()">
+<button onclick="myFunction()">Import</button>
 
-<input type="file" id="myFile">
-
-<p>Click the "Try it" button to disable the file upload button.</p>
-
-<button onclick="myFunction()">Try it</button>
-
-<p id="output"></p>
-
-<input type=text id="text1" value="default text"></input>
-<input type=text id="text2"></input>
-
-<script>
-function myFunction() {
-    var x = document.getElementById("myFile").files[0];
-    var fr = new FileReader();
-    fr.onload = function(e){
-      document.getElementById("output").innerHTML = fr.result;
-    };
-    fr.readAsText(x);
-
-}
-</script>
-
+<!-- The form will be changing based on input -->
+<fieldset>
+	<input type=text id="configVersion" value="" readonly></input><br><br>
+	
+	<!-- developer fieldset is for developer information. 
+	Not modifiable, may be masked for security purposes.-->
+	<fieldset>
+		<legend>Developer</legend>
+		Developer Key <br>
+		<input type=text id="developerKey" value="default value" readonly><br><br>
+		Developer Secret <br>
+		<input type=text id="developerSecret" value="default value" readonly>
+	</fieldset>
+	
+	<br>
+	
+	<!-- server and host fieldset is for account information. 
+	All fields are modifiable, accountToken may have an option to be masked via checkbox -->
+	<fieldset>
+		<legend>Server and Host</legend>
+		Listening Port<br>
+		<input type=text id="listeningPort" value="default value"><br><br>
+		Driver<br>
+		<input type=text id="driver" value="default value"><br><br>
+		Acceptor ID<br>
+		<input type=text id="acceptorID" value="default value"><br><br>
+		Account Token<br>
+		<input type=text id="accountToken" value="default value"><br><br>
+		Auto Reversal Retry Limit
+		<input type=text id="autoReversalRetryLimit" value="default value">
+	</fieldset>
+	
+	<br>
+	
+	<!-- application fieldset is for testing and display purposes. 
+	All fields are modifiable, no masking.-->
+	<fieldset>
+		<legend>Application</legend>
+		Test Mode 
+		<input type="checkbox" id="testMode" value="true"><br><br>
+		Pin Pad Idle Message<br>
+		<input type=text id="pinPadIdleMessage" value="default value"><br><br>
+		Allowed Origins
+		<input type=text id="corsAllowedOrigins" value="default value">
+	</fieldset>
+	
+	<br>
+	
+	<!-- transaction fieldset is for the details of the transaction process. 
+	All fields are modifiable, no masking.-->
+	<fieldset>
+		<legend>Transaction</legend>
+		Partial Approvals 
+		<input type="checkbox" id="allowPartialApprovals" value="true"><br><br>
+		Confirm Original Amount 
+		<input type="checkbox" id="confirmOriginalAmount" value="true"><br><br>
+		AVS Entry Mode<br>
+		<input type=text id="creditAvsEntryCondition" value="default value"><br><br>
+		Duplicate Checking
+		<input type="checkbox" id="checkForDuplicateTransactions" value="true"><br><br>
+		
+		<!--Dropdown
+		Currency Code<br>
+		<input type=text id="currencyCode" value="default value"><br><br>
+		-->
+		
+		Cash back
+		<input type="checkbox" id="isCashbackAllowed" value="true"><br><br>
+		Debit
+		<input type="checkbox" id="isDebitSupported" value="true"><br><br>
+		EMV
+		<input type="checkbox" id="isEmvSupported" value="true"><br><br>
+		Gift
+		<input type="checkbox" id="isGiftSupported" value="true"><br><br>
+		Confirm Convenience Fee
+		<input type="checkbox" id="confirmConvenienceFeeAmount" value="true"><br><br>
+		Tip
+		<input type="checkbox" id="isTipAllowed" value="true"><br><br>
+		Healthcare
+		<input type="checkbox" id="isHealthcareSupported" value="true"><br><br>
+		Cashback Options (separated by commas)<br>
+		<input type=text id="cashbackSelections" value="default value"><br><br>
+		
+		<!--dropdown
+		Market Code<br>
+		<input type=text id="autoReversalRetryLimit" value="default value">
+		-->
+		
+		Maximum Cashback<br>
+		<input type=text id="maximumCashbackAmount" value="default value"><br><br>
+		Tip Options <a href="" alt="Dollar amounts or percentages (i.e. 10%) separated by commas">?</a><br>
+		<input type=text id="tipSelections" value="default value"><br><br>
+		Debit Surcharge<br>
+		<input type=text id="debitSurchage" value="default value"><br><br>
+		Credit Signature Threshold<br>
+		<input type=text id="creditSaleSignatureThresholdAmount" value="default value"><br><br>
+		Signature Format
+		<input type=text id="signatureFormat" value="default value">
+		
+		<!-- Options: What is the other option? 
+		a. AllowAfterChipError
+		b. ???
+		
+		Partial Approvals 
+		<input type="checkbox" id="emvFallbackAllowed" value="true"><br><br>
+		-->
+	</fieldset>
+	
+	<br>
+	
+	<!-- lane fieldset is for lane configuration settings 
+	All fields are modifiable, no masking.-->
+	<fieldset>
+		<legend>Default Lane</legend>
+		Lane Description<br>
+		<input type=text class="description" id="description1" value="default value"><br><br>
+		
+		Lane ID<br>
+		<input type=text class="laneID" id="laneID1" value="default value"><br><br>
+		
+		Terminal Type<br>
+		<input type=text class="laneID" id="laneID1" value="default value"><br><br>
+		
+		Driver<br>
+		<input type=text class="laneID" id="laneID1" value="default value"><br><br>
+		
+		ComPort<br>
+		<input type=text class="laneID" id="laneID1" value="default value"><br><br>
+		
+		Data Bits<br>
+		<input type=text class="laneID" id="laneID1" value="default value"><br><br>
+		
+		Parity<br>
+		<input type=text class="laneID" id="laneID1" value="default value"><br><br>
+		
+		Stop Bits<br>
+		<input type=text class="laneID" id="laneID1" value="default value"><br><br>
+		
+		Handshake<br>
+		<input type=text class="laneID" id="laneID1" value="default value"><br><br>
+		
+		BAUD Rate<br>
+		<input type=text class="laneID" id="laneID1" value="default value"><br><br>
+		
+		Manual Entry
+		<input type="checkbox" id="isManualEntryAllowed" value="true"><br><br>
+		
+		Contactless
+		<input type="checkbox" id="isContactlessMsdEntryAllowed" value="true"><br><br>
+		
+		Terminal ID<br>
+		<input type=text class="laneID" id="laneID1" value="default value"><br><br>
+	</fieldset>
+	
+	<br>
+	
+	<!-- validate button will be using a popup alert for testing purposes, 
+	then will use "validate()" function -->
+	<button onclick="alert('Valid!')">Validate</button>
+</fieldset>
 </body>
 </html>
