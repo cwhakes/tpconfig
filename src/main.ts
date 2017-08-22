@@ -22,13 +22,25 @@ function parseXML(xmlinput: String) {
   //configVersion_field.value = <string> get_value(tripos, "configVersion");
   //developerKey_field.value = <string> get_value(tripos, "developers/developer/developerKey");
 
-  paths().split(" ").forEach( function(path) {
+  paths().split(" ").filter(checkEmpty).forEach( function(path) {
     var checkpoints = path.split("/");
     var element_name = checkpoints[checkpoints.length - 1];
     var field = <HTMLInputElement> document.getElementById(element_name);
 
-    field.value = <string> get_value(tripos, path);
+    try {
+      field.value = <string> get_value(tripos, path);
+    } catch(err) {
+      var ignore = err;
+      field.value = "ERROR";
+      field.style.backgroundColor = "Red";
+    }
   });
+}
+
+function checkEmpty(str: String) {
+  if (str.trim().length > 0) {
+    return str;
+  }
 }
 
 function get_value(tripos:Element, path: String): String {
