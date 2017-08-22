@@ -66,7 +66,7 @@ TODO:
 				<br>
 				
 				<!-- application fieldset is for testing and display purposes. 
-				All fields are modifiable, no masking.-->
+				All fields are modifiable except Allowed Origins, no masking.-->
 				<fieldset>
 					<legend>Application</legend>
 					Test Mode 
@@ -76,13 +76,13 @@ TODO:
 					<input type=text class="pinPadIdleMessage" id="pinPadIdleMessage" value="default value"><br><br>
 					
 					Allowed Origins
-					<input type=text class="corsAllowedOrigins" id="corsAllowedOrigins" value="default value">
+					<input type=text class="corsAllowedOrigins" id="corsAllowedOrigins" value="default value" readonly>
 				</fieldset>
 				
 				<br>
 				
 				<!-- transaction fieldset is for the details of the transaction process. 
-				All fields are modifiable, no masking.-->
+				All fields are modifiable except partial approvals and signature format, no masking.-->
 				<fieldset>
 					<legend>Transaction</legend>
 					Partial Approvals 
@@ -197,13 +197,34 @@ TODO:
 					<input type=text class="parity" id="parity" value="default value"><br><br>
 					
 					Stop Bits<br>
-					<input type=text class="stopBits" id="stopBits" value="default value"><br><br>
+					<select name="stopBits" class="stopBits" id="stopBits">
+						<option value="None">0</option>
+						<option value="One">1</option>
+						<option value="OnePointFive">1.5</option>
+						<option value="Two">2</option>
+					</select><br><br>
 					
 					Handshake<br>
-					<input type=text class="handshake" id="handshake" value="default value"><br><br>
+					<select name="handshake" class="handshake" id="handshake">
+						<option value="None">None</option>
+						<option value="RequestToSend">RequestToSend</option>
+						<option value="XonXoff">XonXoff</option>
+					</select><br><br>
 					
 					BAUD Rate<br>
-					<input type=text class="baudRate" id="baudRate" value="default value"><br><br>
+					<select name="baudRate" class="baudRate" id="baudRate">
+						<option value="75">75</option>
+						<option value="110">110</option>
+						<option value="300">300</option>
+						<option value="1200">1200</option>
+						<option value="2400">2400</option>
+						<option value="4800">4800</option>
+						<option value="9600">9600</option>
+						<option value="19200">19200</option>
+						<option value="38400">38400</option>
+						<option value="57600">57600</option>
+						<option value="115200">115200</option>
+					</select><br><br>
 					
 					Manual Entry
 					<input type="checkbox" class="isManualEntryAllowed" id="isManualEntryAllowed" value="true"><br><br>
