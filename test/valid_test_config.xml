@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="utf-8"?>
+<tripos xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <!--The version of the config file.-->
+  <configVersion>1</configVersion>
+  <developers>
+    <!--Contains a list of developer identities which can be used to access triPOS through rest calls. You can set the developerKey and developerSecret to any value you want as long as the developerKeys are unique within this file. You may have multiple developer entries-->
+    <developer>
+      <!--This is the key that is transmitted in the clear as part of the header of each request to triPOS-->
+      <developerKey>abcd1234-1234-abcd-1234-abcd1234567</developerKey>
+      <!--This is the secret that is used to sign each request to triPOS-->
+      <developerSecret>12345678-abcd-1234-abcd-abcd12345678</developerSecret>
+    </developer>
+  </developers>
+  <server>
+    <!--This is the port which the triPOS service will listen at. Setting it to 8080, for example, will make a REST web service available at http://localhost:8080/-->
+    <listeningPort>8080</listeningPort>
+  </server>
+  <host>
+    <!--Enter 'Express' or 'Null'. Use Null to test without any connection to Express.-->
+    <driver>Express</driver>
+    <!--Your Express Acceptor ID which is also your Merchant ID.-->
+    <acceptorId>12345678</acceptorId>
+    <!--Your Express Account ID.-->
+    <accountId>1234567</accountId>
+    <!--Your Express Account Token.-->
+    <accountToken>abcdefghijklmnopqrstuvwxyz1234567890abcdefghijklmnopqrstuvwxyz1234567890</accountToken>
+    <!--During Automatic Reversals how many times should we retry running the reversal before giving up?-->
+    <autoReversalRetryLimit>1</autoReversalRetryLimit>
+  </host>
+  <application>
+    <!--Set to 'true' to be in Test/Certification mode or 'false' for Production mode. When test mode is set to true, if 'signature' is in the 'tp-authorization' in the request header then requests will be validated. If there is no 'signature' in the 'tp-authorization' header when you are in test mode, a valid 'credential' is still expected as part of the header is still required in the request header. tp-authorization headers should look something like this: tp-authorization: Version=1.0, Algorithm=TP-HMAC-SHA256, Credential=045c58b9-7441-495f-849a-5a6de45fbe31, SignedHeaders=accept;accept-encoding;accept-language;connection;dnt;host;origin;user-agent, Nonce=084abe6d-b7a2-4de6-8364-4d31e81cdca1, RequestDate=2014-10-02T06:17:47.9449347Z, Signature=f6326a9ca5614747a478cdc9e58525f73831f36dc73120a2eea61bcc98ef79c0. -->
+    <testMode>false</testMode>
+    <!--Message to display on the PIN pad when it is idle-->
+    <pinPadIdleMessage>Welcome / Vantiv Integrated Payments Pin Pad Message</pinPadIdleMessage>
+    <!--Origins triPOS will accept requests from: Disabled by default, use * to accept from any origin-->
+    <corsAllowedOrigins />
+  </application>
+  <transaction>
+    <allowPartialApprovals>True</allowPartialApprovals>
+    <confirmOriginalAmount>True</confirmOriginalAmount>
+    <creditAvsEntryCondition>Keyed</creditAvsEntryCondition>
+    <checkForDuplicateTransactions>True</checkForDuplicateTransactions>
+    <currencyCode>Usd</currencyCode>
+    <isCashbackAllowed>False</isCashbackAllowed>
+    <isDebitSupported>True</isDebitSupported>
+    <isEmvSupported>True</isEmvSupported>
+    <isGiftSupported>False</isGiftSupported>
+    <confirmConvenienceFeeAmount>False</confirmConvenienceFeeAmount>
+    <isTipAllowed>False</isTipAllowed>
+    <isHealthcareSupported>False</isHealthcareSupported>
+    <cashbackSelections>1,2,3,4,5,0</cashbackSelections>
+    <cashbackAmountIncrement>5</cashbackAmountIncrement>
+    <marketCode>Retail</marketCode>
+    <maximumCashbackAmount>100</maximumCashbackAmount>
+    <tipSelections>
+    </tipSelections>
+    <debitSurcharge>0</debitSurcharge>
+    <creditSaleSignatureThresholdAmount>25</creditSaleSignatureThresholdAmount>
+    <signatureFormat>PointsLittleEndian</signatureFormat>
+    <emvFallbackAllowed>AllowAfterChipError</emvFallbackAllowed>
+  </transaction>
+  <lanes>
+    <serialLane description="NULL PIN pad" laneId="9999">
+      <pinpad>
+        <!--terminalType: Unknown, PointOfSale, ECommerce, Moto, FuelPump, Atm.-->
+        <terminalType>PointOfSale</terminalType>
+        <!--Driver values can be: Null, VeriFoneXpi, VerifoneFormAgentXpi, IngenicoRba.-->
+        <driver>Null</driver>
+        <!--If the PIN pad is not connected via IP, name of serial device to which the PIN pad is attached (e.g. COM1, /dev/tty1, etc).-->
+        <comPort>COM9999</comPort>
+        <!--If the PIN pad is connected via serial device, the data bit setting.-->
+        <dataBits>8</dataBits>
+        <!--If the PIN pad is connected via serial device, the parity setting.-->
+        <parity>None</parity>
+        <!--If the PIN pad is connected via serial device, the stop bits setting: None, One, OnePointFive, Two.-->
+        <stopBits>One</stopBits>
+        <!--If the PIN pad is connected via serial device, the handshake setting: 'None', 'RequestToSend', 'XonXoff'-->
+        <handshake>None</handshake>
+        <!--Baud rate of serial communications. Valid values are: 75, 110, 300, 1200, 2400, 4800, 9600, 19200, 38400, 57600, 115200.-->
+        <baudRate>57600</baudRate>
+        <!--Set to true to allow manual entry of card account numbers on the PIN pad.-->
+        <isManualEntryAllowed>true</isManualEntryAllowed>
+        <!--Set to true to allow contactless entry.-->
+        <isContactlessMsdEntryAllowed>false</isContactlessMsdEntryAllowed>
+      </pinpad>
+      <host>
+        <!--The ID of the terminal-->
+        <terminalId>0000009999</terminalId>
+      </host>
+    </serialLane>
+    <serialLane description="Debit NULL PIN pad" laneId="9998">
+      <pinpad>
+        <!--terminalType: Unknown, PointOfSale, ECommerce, Moto, FuelPump, Atm.-->
+        <terminalType>1</terminalType>
+        <!--Driver values can be: Null, VeriFoneXpi, VerifoneFormAgentXpi, IngenicoRba.-->
+        <driver>DebitNull</driver>
+        <!--If the PIN pad is not connected via IP, name of serial device to which the PIN pad is attached (e.g. COM1, /dev/tty1, etc).-->
+        <comPort>COM9998</comPort>
+        <!--If the PIN pad is connected via serial device, the data bit setting.-->
+        <dataBits>8</dataBits>
+        <!--If the PIN pad is connected via serial device, the parity setting.-->
+        <parity>None</parity>
+        <!--If the PIN pad is connected via serial device, the stop bits setting: None, One, OnePointFive, Two.-->
+        <stopBits>One</stopBits>
+        <!--If the PIN pad is connected via serial device, the handshake setting: 'None', 'RequestToSend', 'XonXoff'-->
+        <handshake>None</handshake>
+        <!--Baud rate of serial communications. Valid values are: 75, 110, 300, 1200, 2400, 4800, 9600, 19200, 38400, 57600, 115200.-->
+        <baudRate>57600</baudRate>
+        <!--Set to true to allow manual entry of card account numbers on the PIN pad.-->
+        <isManualEntryAllowed>true</isManualEntryAllowed>
+      </pinpad>
+      <host>
+        <!--The ID of the terminal-->
+        <terminalId>0000009998</terminalId>
+      </host>
+    </serialLane>
+    <serialLane description="Gift NULL PIN pad" laneId="9997">
+      <pinpad>
+        <!--terminalType: Unknown, PointOfSale, ECommerce, Moto, FuelPump, Atm.-->
+        <terminalType>1</terminalType>
+        <!--Driver values can be: Null, VeriFoneXpi, VerifoneFormAgentXpi, IngenicoRba.-->
+        <driver>GiftNull</driver>
+        <!--If the PIN pad is not connected via IP, name of serial device to which the PIN pad is attached (e.g. COM1, /dev/tty1, etc).-->
+        <comPort>COM9997</comPort>
+        <!--If the PIN pad is connected via serial device, the data bit setting.-->
+        <dataBits>8</dataBits>
+        <!--If the PIN pad is connected via serial device, the parity setting.-->
+        <parity>None</parity>
+        <!--If the PIN pad is connected via serial device, the stop bits setting: None, One, OnePointFive, Two.-->
+        <stopBits>One</stopBits>
+        <!--If the PIN pad is connected via serial device, the handshake setting: 'None', 'RequestToSend', 'XonXoff'-->
+        <handshake>None</handshake>
+        <!--Baud rate of serial communications. Valid values are: 75, 110, 300, 1200, 2400, 4800, 9600, 19200, 38400, 57600, 115200.-->
+        <baudRate>57600</baudRate>
+        <!--Set to true to allow manual entry of card account numbers on the PIN pad.-->
+        <isManualEntryAllowed>true</isManualEntryAllowed>
+      </pinpad>
+      <host>
+        <!--The ID of the terminal-->
+        <terminalId>0000009997</terminalId>
+      </host>
+    </serialLane>
+    <serialLane description="Null PIN pad that does not support signature. Used for testing only." laneId="9995">
+      <pinpad>
+        <!--terminalType: Unknown, PointOfSale, ECommerce, Moto, FuelPump, Atm.-->
+        <terminalType>PointOfSale</terminalType>
+        <!--Driver values can be: Null, VeriFoneXpi, VerifoneFormAgentXpi, IngenicoRba.-->
+        <driver>NullPinPadDoesNotSupportSignature</driver>
+        <!--If the PIN pad is not connected via IP, name of serial device to which the PIN pad is attached (e.g. COM1, /dev/tty1, etc).-->
+        <comPort>COM9995</comPort>
+        <!--If the PIN pad is connected via serial device, the data bit setting.-->
+        <dataBits>8</dataBits>
+        <!--If the PIN pad is connected via serial device, the parity setting.-->
+        <parity>None</parity>
+        <!--If the PIN pad is connected via serial device, the stop bits setting: None, One, OnePointFive, Two.-->
+        <stopBits>One</stopBits>
+        <!--If the PIN pad is connected via serial device, the handshake setting: 'None', 'RequestToSend', 'XonXoff'-->
+        <handshake>None</handshake>
+        <!--Baud rate of serial communications. Valid values are: 75, 110, 300, 1200, 2400, 4800, 9600, 19200, 38400, 57600, 115200.-->
+        <baudRate>57600</baudRate>
+        <!--Set to true to allow manual entry of card account numbers on the PIN pad.-->
+        <isManualEntryAllowed>true</isManualEntryAllowed>
+        <!--Set to true to allow contactless entry.-->
+        <isContactlessMsdEntryAllowed>false</isContactlessMsdEntryAllowed>
+      </pinpad>
+      <host>
+        <!--The ID of the terminal-->
+        <terminalId>0000009995</terminalId>
+      </host>
+    </serialLane>
+    <serialLane description="Null PIN pad that always returns Contactless MSD card data. Used for testing only." laneId="9994">
+      <pinpad>
+        <!--terminalType: Unknown, PointOfSale, ECommerce, Moto, FuelPump, Atm.-->
+        <terminalType>PointOfSale</terminalType>
+        <!--Driver values can be: Null, VeriFoneXpi, VerifoneFormAgentXpi, IngenicoRba.-->
+        <driver>NullPinPadReturnsContactlessMsd</driver>
+        <!--If the PIN pad is not connected via IP, name of serial device to which the PIN pad is attached (e.g. COM1, /dev/tty1, etc).-->
+        <comPort>COM9994</comPort>
+        <!--If the PIN pad is connected via serial device, the data bit setting.-->
+        <dataBits>8</dataBits>
+        <!--If the PIN pad is connected via serial device, the parity setting.-->
+        <parity>None</parity>
+        <!--If the PIN pad is connected via serial device, the stop bits setting: None, One, OnePointFive, Two.-->
+        <stopBits>One</stopBits>
+        <!--If the PIN pad is connected via serial device, the handshake setting: 'None', 'RequestToSend', 'XonXoff'-->
+        <handshake>None</handshake>
+        <!--Baud rate of serial communications. Valid values are: 75, 110, 300, 1200, 2400, 4800, 9600, 19200, 38400, 57600, 115200.-->
+        <baudRate>57600</baudRate>
+        <!--Set to true to allow manual entry of card account numbers on the PIN pad.-->
+        <isManualEntryAllowed>true</isManualEntryAllowed>
+        <!--Set to true to allow contactless entry.-->
+        <isContactlessMsdEntryAllowed>true</isContactlessMsdEntryAllowed>
+      </pinpad>
+      <host>
+        <!--The ID of the terminal-->
+        <terminalId>0000009994</terminalId>
+      </host>
+    </serialLane>
+    <serialLane description="Null PIN pad that always returns Encrypted Contactless MSD card data. Used for testing only." laneId="9993">
+      <pinpad>
+        <!--terminalType: Unknown, PointOfSale, ECommerce, Moto, FuelPump, Atm.-->
+        <terminalType>PointOfSale</terminalType>
+        <!--Driver values can be: Null, VeriFoneXpi, VerifoneFormAgentXpi, IngenicoRba.-->
+        <driver>NullPinPadReturnsEncryptedContactlessMsd</driver>
+        <!--If the PIN pad is not connected via IP, name of serial device to which the PIN pad is attached (e.g. COM1, /dev/tty1, etc).-->
+        <comPort>COM9993</comPort>
+        <!--If the PIN pad is connected via serial device, the data bit setting.-->
+        <dataBits>8</dataBits>
+        <!--If the PIN pad is connected via serial device, the parity setting.-->
+        <parity>None</parity>
+        <!--If the PIN pad is connected via serial device, the stop bits setting: None, One, OnePointFive, Two.-->
+        <stopBits>One</stopBits>
+        <!--If the PIN pad is connected via serial device, the handshake setting: 'None', 'RequestToSend', 'XonXoff'-->
+        <handshake>None</handshake>
+        <!--Baud rate of serial communications. Valid values are: 75, 110, 300, 1200, 2400, 4800, 9600, 19200, 38400, 57600, 115200.-->
+        <baudRate>57600</baudRate>
+        <!--Set to true to allow manual entry of card account numbers on the PIN pad.-->
+        <isManualEntryAllowed>true</isManualEntryAllowed>
+        <!--Set to true to allow contactless entry.-->
+        <isContactlessMsdEntryAllowed>true</isContactlessMsdEntryAllowed>
+      </pinpad>
+      <host>
+        <!--The ID of the terminal-->
+        <terminalId>0000009993</terminalId>
+      </host>
+    </serialLane>
+    <serialLane laneId="1" description="install configured lane" initializeOnStartup="true">
+      <pinpad>
+        <terminalType>PointOfSale</terminalType>
+        <driver>VeriFoneFormAgentXpi</driver>
+        <comPort>COM9</comPort>
+        <dataBits>8</dataBits>
+        <parity>none</parity>
+        <stopBits>One</stopBits>
+        <handshake>None</handshake>
+        <baudRate>115200</baudRate>
+        <isManualEntryAllowed>true</isManualEntryAllowed>
+        <isContactlessMsdEntryAllowed>true</isContactlessMsdEntryAllowed>
+      </pinpad>
+      <host>
+        <terminalId>0000001</terminalId>
+      </host>
+    </serialLane>
+    <ipLane description="Virtual PIN pad" initializeOnStartup="false" laneId="9900">
+      <pinpad>
+        <!--terminalType: Unknown, PointOfSale, ECommerce, Moto, FuelPump, Atm.-->
+        <terminalType>PointOfSale</terminalType>
+        <!--Driver values can be: Null, VeriFoneXpi, VerifoneFormAgentXpi, IngenicoRba.-->
+        <driver>Virtual</driver>
+        <!--If the PIN pad is not connected through a serial device, the IP address of the PIN pad.-->
+        <ipAddress>http://localhost:9000/api/VirtualPinPad/</ipAddress>
+        <!--Set to true to allow manual entry of card account numbers on the PIN pad.-->
+        <isManualEntryAllowed>true</isManualEntryAllowed>
+      </pinpad>
+      <host>
+        <!--The ID of the terminal-->
+        <terminalId>0000009900</terminalId>
+      </host>
+    </ipLane>
+  </lanes>
+</tripos>
