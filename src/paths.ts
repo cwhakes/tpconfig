@@ -10,7 +10,7 @@ host/accountToken \
 host/autoReversalRetryLimit \
 application/pinPadIdleMessage \
 application/corsAllowedOrigins \
-transaction/CreditAvsEntryCondition \
+transaction/creditAvsEntryCondition \
 transaction/cashbackSelections \
 transaction/cashbackAmountIncrement \
 transaction/maximumCashbackAmount \
