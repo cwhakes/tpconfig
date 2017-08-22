@@ -66,8 +66,7 @@ terminalID has alpha character
     <cashbackAmountIncrement>a</cashbackAmountIncrement>
     <marketCode>Retail</marketCode>
     <maximumCashbackAmount>two</maximumCashbackAmount>
-    <tipSelections>
-    </tipSelections>
+    <tipSelections>10%, d5%, 18%, a0%</tipSelections>
     <debitSurcharge>0</debitSurcharge>
     <creditSaleSignatureThresholdAmount>twentyfive</creditSaleSignatureThresholdAmount>
     <signatureFormat>PointsLittleEndian</signatureFormat>

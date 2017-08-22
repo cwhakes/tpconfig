@@ -52,8 +52,7 @@
     <cashbackAmountIncrement>5</cashbackAmountIncrement>
     <marketCode>Retail</marketCode>
     <maximumCashbackAmount>100</maximumCashbackAmount>
-    <tipSelections>
-    </tipSelections>
+    <tipSelections>10%, 15%, 18%, 20%</tipSelections>
     <debitSurcharge>0</debitSurcharge>
     <creditSaleSignatureThresholdAmount>25</creditSaleSignatureThresholdAmount>
     <signatureFormat>PointsLittleEndian</signatureFormat>
