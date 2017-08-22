@@ -1,10 +1,14 @@
 <!DOCTYPE html>
 <html>
+<head>
+  <script src="scripts/main.js"></script>
+</head>
+
 <body>
 
 <h3>A demonstration of how to access a File Upload Button</h3>
 
-<input type="file" id="myFile">
+<input type="file" id="myFile" oninput="myFunction()">
 
 <p>Click the "Try it" button to disable the file upload button.</p>
 
@@ -14,18 +18,6 @@
 
 <input type=text id="text1" value="default text"></input>
 <input type=text id="text2"></input>
-
-<script>
-function myFunction() {
-    var x = document.getElementById("myFile").files[0];
-    var fr = new FileReader();
-    fr.onload = function(e){
-      document.getElementById("output").innerHTML = fr.result;
-    };
-    fr.readAsText(x);
-
-}
-</script>
 
 </body>
 </html>
