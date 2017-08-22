@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h3>A demonstration of how to access a File Upload Button</h3>
+
+<input type="file" id="myFile">
+
+<p>Click the "Try it" button to disable the file upload button.</p>
+
+<button onclick="myFunction()">Try it</button>
+
+<p id="output"></p>
+
+<input type=text id="text1" value="default text"></input>
+<input type=text id="text2"></input>
+
+<script>
+function myFunction() {
+    var x = document.getElementById("myFile").files[0];
+    var fr = new FileReader();
+    fr.onload = function(e){
+      document.getElementById("output").innerHTML = fr.result;
+    };
+    fr.readAsText(x);
+
+}
+</script>
+
+</body>
+</html>
