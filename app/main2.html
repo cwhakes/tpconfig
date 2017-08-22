@@ -6,6 +6,9 @@ Date: 8/22/17-8/23/17
 
 TODO: 
   -- Re-organize so its formatting makes more sense, esp when it comes to checkboxes.
+  -- Collapsable forms for lanes
+  -- Remove Lane button per collapsable form
+  -- Fix the roll-over text for the tip options 
 -->
 
 <!DOCTYPE html>
@@ -127,6 +130,52 @@ TODO:
 		Partial Approvals 
 		<input type="checkbox" id="emvFallbackAllowed" value="true"><br><br>
 		-->
+	</fieldset>
+	
+	<br>
+	
+	<!-- lane fieldset is for lane configuration settings 
+	All fields are modifiable, no masking.-->
+	<fieldset>
+		<legend>Default Lane</legend>
+		Lane Description<br>
+		<input type=text class="description" id="description1" value="default value"><br><br>
+		
+		Lane ID<br>
+		<input type=text class="laneID" id="laneID1" value="default value"><br><br>
+		
+		Terminal Type<br>
+		<input type=text class="laneID" id="laneID1" value="default value"><br><br>
+		
+		Driver<br>
+		<input type=text class="laneID" id="laneID1" value="default value"><br><br>
+		
+		ComPort<br>
+		<input type=text class="laneID" id="laneID1" value="default value"><br><br>
+		
+		Data Bits<br>
+		<input type=text class="laneID" id="laneID1" value="default value"><br><br>
+		
+		Parity<br>
+		<input type=text class="laneID" id="laneID1" value="default value"><br><br>
+		
+		Stop Bits<br>
+		<input type=text class="laneID" id="laneID1" value="default value"><br><br>
+		
+		Handshake<br>
+		<input type=text class="laneID" id="laneID1" value="default value"><br><br>
+		
+		BAUD Rate<br>
+		<input type=text class="laneID" id="laneID1" value="default value"><br><br>
+		
+		Manual Entry
+		<input type="checkbox" id="isManualEntryAllowed" value="true"><br><br>
+		
+		Contactless
+		<input type="checkbox" id="isContactlessMsdEntryAllowed" value="true"><br><br>
+		
+		Terminal ID<br>
+		<input type=text class="laneID" id="laneID1" value="default value"><br><br>
 	</fieldset>
 	
 	<br>
