@@ -1,10 +1,10 @@
 <!-- Name: TriPOS config tool
-Description: Import an xml triPOS config document, validates fields, 
+Description: Import an xml triPOS config document, validates fields,
 	and export to a new doc.
 Collaborators: Eva Goins, Will Hakes
-Date: 8/22/17-8/23/17 
+Date: 8/22/17-8/23/17
 
-TODO: 
+TODO:
   -- Re-organize so its formatting makes more sense, esp when it comes to checkboxes. css?
 -->
 
@@ -26,74 +26,74 @@ TODO:
 			<fieldset>
 				Config File Version <br>
 				<input type=text class="configVersion" id="configVersion" value="" readonly></input><br><br>
-				
-				<!-- developer fieldset is for developer information. 
+
+				<!-- developer fieldset is for developer information.
 				Not modifiable, may be masked for security purposes.-->
 				<fieldset>
 					<legend>Developer</legend>
 					Developer Key <br>
 					<input type=text class="developerKey" id="developerKey" value="default value" readonly><br><br>
-					
+
 					Developer Secret <br>
-					<input type=text class="developerSecret" id="developerSecret" value="default value" readonly>
+					<input type=text class="developerSecret" id="developerSecret" value="default value" oninput="validate_developerSecret(this)">
 				</fieldset>
-				
+
 				<br>
-				
-				<!-- server and host fieldset is for account information. 
+
+				<!-- server and host fieldset is for account information.
 				All fields are modifiable, accountToken may have an option to be masked via checkbox -->
 				<fieldset>
 					<legend>Server and Host</legend>
 					Listening Port<br>
 					<input type=text class="listeningPort" id="listeningPort" value="default value"><br><br>
-					
+
 					Driver<br>
 					<select name="driver" class="driver" id="host_driver">
 						<option value="Express">Express</option>
 						<option value="Null">None</option>
 					</select><br><br>
-					
+
 					Acceptor ID<br>
 					<input type=text class="acceptorId" id="acceptorId" value="default value"><br><br>
-					
+
 					Account Token<br>
 					<input type=text class="accountToken" id="accountToken" value="default value"><br><br>
-					
+
 					Auto Reversal Retry Limit
 					<input type=text class="autoReversalRetryLimit" id="autoReversalRetryLimit" value="default value">
 				</fieldset>
-				
+
 				<br>
-				
-				<!-- application fieldset is for testing and display purposes. 
+
+				<!-- application fieldset is for testing and display purposes.
 				All fields are modifiable except Allowed Origins, no masking.-->
 				<fieldset>
 					<legend>Application</legend>
-					Test Mode 
+					Test Mode
 					<input type="checkbox" class="testMode" id="testMode" value="true"><br><br>
-					
+
 					Pin Pad Idle Message<br>
 					<input type=text class="pinPadIdleMessage" id="pinPadIdleMessage" value="default value"><br><br>
-					
+
 					Allowed Origins
 					<input type=text class="corsAllowedOrigins" id="corsAllowedOrigins" value="default value" readonly>
 				</fieldset>
-				
+
 				<br>
-				
-				<!-- transaction fieldset is for the details of the transaction process. 
+
+				<!-- transaction fieldset is for the details of the transaction process.
 				All fields are modifiable except partial approvals and signature format, no masking.-->
 				<fieldset>
 					<legend>Transaction</legend>
-					Partial Approvals 
+					Partial Approvals
 					<input type="checkbox" class="allowPartialApprovals" id="allowPartialApprovals" value="true"><br><br>
-					
-					Confirm Original Amount 
+
+					Confirm Original Amount
 					<input type="checkbox" class="confirmOriginalAmount" id="confirmOriginalAmount" value="true"><br><br>
-					
+
 					AVS Entry Mode<br>
 					<input type=text class="creditAvsEntryCondition" id="creditAvsEntryCondition" value="default value"><br><br>
-					
+
 					Duplicate Checking
 					<input type="checkbox" class="checkForDuplicateTransactions" id="checkForDuplicateTransactions" value="true"><br><br>
 
@@ -103,73 +103,73 @@ TODO:
 						<option value="">CAN</option>
 					</select>
 					<br><br>
-					
+
 					<!-- possible multi-line box-->
 					Cashback Allow
 					<input type="checkbox" class="isCashbackAllowed" id="isCashbackAllowed" value="true"><br><br>
-					
+
 					Debit Support
 					<input type="checkbox" class="isDebitSupported" id="isDebitSupported" value="true"><br><br>
-					
+
 					EMV Support
 					<input type="checkbox" class="isEmvSupported" id="isEmvSupported" value="true"><br><br>
-					
+
 					Gift Support
 					<input type="checkbox" class="isGiftSupported" id="isGiftSupported" value="true"><br><br>
-					
+
 					Confirm Convenience Fee
 					<input type="checkbox" class="confirmConvenienceFeeAmount" id="confirmConvenienceFeeAmount" value="true"><br><br>
-					
+
 					<!-- possible multi-line box-->
 					Tip Allow
 					<input type="checkbox" class="isTipAllowed" id="isTipAllowed" value="true"><br><br>
-					
+
 					Healthcare Support
 					<input type="checkbox" class="isHealthcareSupported" id="isHealthcareSupported" value="true"><br><br>
-					
+
 					Cashback Options (separated by commas)<br>
 					<input type=text class="cashbackSelections" id="cashbackSelections" value="default value"><br><br>
-					
+
 					Market Code<br>
 					<select name="market_code" class="autoReversalRetryLimit" id="autoReversalRetryLimit">
 						<option value="eCommerce">eCommerce</option>
 						<option value="Retail">Retail</option>
 						<option value="Restaurant">Restaurant</option>
 					</select><br><br>
-					
+
 					Maximum Cashback<br>
 					<input type=text class="maximumCashbackAmount" id="maximumCashbackAmount" value="default value"><br><br>
-					
+
 					<!-- possible multi-line box-->
 					Tip Options <a href title="Dollar amounts or percentages (i.e. 10%) separated by commas">?</a><br>
 					<input type=text class="tipSelections" id="tipSelections" value="default value"><br><br>
-					
+
 					Debit Surcharge<br>
 					<input type=text class="debitSurcharge" id="debitSurchage" value="default value"><br><br>
-					
+
 					Credit Signature Threshold<br>
 					<input type=text class="creditSaleSignatureThresholdAmount" id="creditSaleSignatureThresholdAmount" value="default value"><br><br>
-					
+
 					Signature Format
 					<input type=text class="signatureFormat" id="signatureFormat" value="PointsLittleEndian" readonly>
-					
-					Partial Approvals 
+
+					Partial Approvals
 					<input type="checkbox" class="emvFallbackAllowed" id="emvFallbackAllowed" value="true" checked readonly><br><br>
 				</fieldset>
-				
+
 				<br>
-				
-				<!-- lane fieldset is for lane configuration settings 
+
+				<!-- lane fieldset is for lane configuration settings
 				All fields are modifiable, no masking.-->
 				<fieldset>
 					<legend>Default Lane</legend>
 					Lane Description<br>
 					<input type=text class="description" id="description" value="default value"><br><br>
-					
+
 					Lane ID<br>
 					<input type=text class="laneId" id="laneId" value="default value"><br><br>
-					
-					Terminal Type<br>					
+
+					Terminal Type<br>
 					<select name="terminalType" class="terminalType" id="terminalType">
 						<option value="Unknown">Unknown</option>
 						<option value="PointOfSale">Point Of Sale</option>
@@ -178,7 +178,7 @@ TODO:
 						<option value="FuelPump">Fuel Pump</option>
 						<option value="Atm">ATM</option>
 					</select><br><br>
-					
+
 					Driver<br>
 					<select name="pinpad_driver" class="driver" id="pinpad_driver">
 						<option value="Null">None</option>
@@ -186,16 +186,16 @@ TODO:
 						<option value="VerifoneFormAgentXpi">VerifoneFormAgentXpi</option>
 						<option value="IngenicoRba">IngenicoRba</option>
 					</select><br><br>
-					
+
 					ComPort<br>
 					<input type=text class="comPort" id="comPort" value="default value"><br><br>
-					
+
 					Data Bits<br>
 					<input type=text class="dataBits" id="dataBits" value="default value"><br><br>
-					
+
 					Parity<br>
 					<input type=text class="parity" id="parity" value="default value"><br><br>
-					
+
 					Stop Bits<br>
 					<select name="stopBits" class="stopBits" id="stopBits">
 						<option value="None">0</option>
@@ -203,14 +203,14 @@ TODO:
 						<option value="OnePointFive">1.5</option>
 						<option value="Two">2</option>
 					</select><br><br>
-					
+
 					Handshake<br>
 					<select name="handshake" class="handshake" id="handshake">
 						<option value="None">None</option>
 						<option value="RequestToSend">RequestToSend</option>
 						<option value="XonXoff">XonXoff</option>
 					</select><br><br>
-					
+
 					BAUD Rate<br>
 					<select name="baudRate" class="baudRate" id="baudRate">
 						<option value="75">75</option>
@@ -225,37 +225,37 @@ TODO:
 						<option value="57600">57600</option>
 						<option value="115200">115200</option>
 					</select><br><br>
-					
+
 					Manual Entry
 					<input type="checkbox" class="isManualEntryAllowed" id="isManualEntryAllowed" value="true"><br><br>
-					
+
 					Contactless
 					<input type="checkbox" class="isContactlessMsdEntryAllowed" id="isContactlessMsdEntryAllowed" value="true"><br><br>
-					
+
 					Terminal ID<br>
 					<input type=text class="terminalId" id="laneID1" value="default value"><br><br>
-					
+
 					<!-- Added functionality: Add lanes to match the same config settings as default lane
-					
+
 					Add Lanes?
 					<input type="checkbox" class="addLanes" id="addLanes" value="true"><br><br>
-					
-					Lane Count: 
+
+					Lane Count:
 					<input type=text class="laneCount" id="laneCount" value="0">
 					-->
-					
+
 				</fieldset>
-				
+
 				<br>
-				
-				<!-- validate button will be using a popup alert for testing purposes, 
-				then will use "validate()" function 
+
+				<!-- validate button will be using a popup alert for testing purposes,
+				then will use "validate()" function
 				Export button will export the set configuration settings into a new XML document
-				
-				<button onclick="alert('Valid!')">Validate</button> 
+
+				<button onclick="alert('Valid!')">Validate</button>
 				<button onclick="alert('Exported!')">Export</button>
 				-->
-				
+
 			</fieldset>
 		</form>
 	</body>
