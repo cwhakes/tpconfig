@@ -8,16 +8,16 @@ function myFunction() {
     fr.readAsText(x);
 }
 function parseXML(xmlinput) {
-    var text1 = document.getElementById("text1");
-    var text2 = document.getElementById("text2");
+    var configVersion_field = document.getElementById("configVersion");
+    var developerKey_field = document.getElementById("developerKey");
     var parser = new DOMParser();
     var the_dom = parser.parseFromString(xmlinput.toString(), "application/xml");
     var tripos = the_dom.getElementsByTagName('tripos')[0];
     var configVersion = tripos.getElementsByTagName('configVersion')[0];
-    text1.value = configVersion.textContent;
+    configVersion_field.value = configVersion.textContent;
     var developers = tripos.getElementsByTagName('developers')[0];
     var developer = developers.getElementsByTagName('developer')[0];
     var developerKey = developer.getElementsByTagName('developerKey')[0];
-    text2.value = developerKey.textContent;
+    developerKey_field.value = developerKey.textContent;
 }
 //# sourceMappingURL=main.js.map
