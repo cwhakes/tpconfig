@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<tripos xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <!--The version of the config file.-->
+  <configVersion>1</configVersion>
+  <developers>
+    <!--Contains a list of developer identities which can be used to access triPOS through rest calls. You can set the developerKey and developerSecret to any value you want as long as the developerKeys are unique within this file. You may have multiple developer entries-->
+    <developer>
+      <!--This is the key that is transmitted in the clear as part of the header of each request to triPOS-->
+      <developerKey>somekey</developerKey>
+      <!--This is the secret that is used to sign each request to triPOS-->
+      <developerSecret>somesecret</developerSecret>
+    </developer>
+  </developers>
+</tripos>
