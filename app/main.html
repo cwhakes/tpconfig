@@ -5,10 +5,9 @@ Collaborators: Eva Goins, Will Hakes
 Date: 8/22/17-8/23/17 
 
 TODO: 
-  -- Re-organize so its formatting makes more sense, esp when it comes to checkboxes.
+  -- Re-organize so its formatting makes more sense, esp when it comes to checkboxes. css?
   -- Collapsable forms for lanes
   -- Remove Lane button per collapsable form
-  -- Fix the roll-over text for the tip options 
 -->
 
 <!DOCTYPE html>
@@ -114,7 +113,7 @@ TODO:
 		
 		Maximum Cashback<br>
 		<input type=text id="maximumCashbackAmount" value="default value"><br><br>
-		Tip Options <a href="" alt="Dollar amounts or percentages (i.e. 10%) separated by commas">?</a><br>
+		Tip Options <a href title="Dollar amounts or percentages (i.e. 10%) separated by commas">?</a><br>
 		<input type=text id="tipSelections" value="default value"><br><br>
 		Debit Surcharge<br>
 		<input type=text id="debitSurchage" value="default value"><br><br>
@@ -176,6 +175,8 @@ TODO:
 		
 		Terminal ID<br>
 		<input type=text class="laneID" id="laneID1" value="default value"><br><br>
+		
+		<button onclick="alert('Lane alert!')">Add</button>
 	</fieldset>
 	
 	<br>
