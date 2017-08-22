@@ -16,16 +16,6 @@ function parseXML(xmlinput) {
     configVersion_field.value = get_value(tripos, "configVersion");
     developerKey_field.value = get_value(tripos, "developers/developer/developerKey");
 }
-function get_configVersion(tripos) {
-    var configVersion = tripos.getElementsByTagName('configVersion')[0];
-    return configVersion.textContent;
-}
-function get_developerKey(tripos) {
-    var developers = tripos.getElementsByTagName('developers')[0];
-    var developer = developers.getElementsByTagName('developer')[0];
-    var developerKey = developer.getElementsByTagName('developerKey')[0];
-    return developerKey.textContent;
-}
 function get_value(tripos, path) {
     var location = tripos;
     var checkpoints = path.split("/");
