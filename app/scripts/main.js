@@ -17,12 +17,15 @@ function parseXML(xmlinput) {
         var field = document.getElementById(element_name);
         try {
             field.value = get_value(tripos, path);
+            field.style.backgroundColor = "White";
         }
         catch (err) {
             var ignore = err;
             field.value = "ERROR";
             field.style.backgroundColor = "Red";
         }
+        var e = field;
+        eval(e.dataset.callback);
     });
     paths_checkboxes().split(" ").filter(checkEmpty).forEach(function (path) {
         var checkpoints = path.trim().split("/");
@@ -108,7 +111,11 @@ lanes/serialLane/pinpad/isManualEntryAllowed \
 lanes/serialLane/pinpad/isContactlessMsdEntryAllowed \
   ".trim();
 }
-function validate_developerSecret(self) {
+function validateInput(event) {
+    var e = event.target;
+    eval(e.dataset.callback);
+}
+function validateHex(self) {
     var data = self.value.split("-").join("");
     var array = data.match("^[0-9a-fA-F]*$");
     if (array != null) {
@@ -117,9 +124,5 @@ function validate_developerSecret(self) {
     else {
         self.style.backgroundColor = "red";
     }
-}
-function validateInput(event) {
-    var element = event.target;
-    eval(element.dataset.callback);
 }
 //# sourceMappingURL=main.js.map

@@ -32,11 +32,15 @@ function parseXML(xmlinput: String) {
 
     try {
       field.value = <string> get_value(tripos, path);
+      field.style.backgroundColor = "White";
     } catch(err) {
       var ignore = err;
       field.value = "ERROR";
       field.style.backgroundColor = "Red";
     }
+
+    var e = field;
+    eval(e.dataset.callback);
   });
 
   paths_checkboxes().split(" ").filter(checkEmpty).forEach( function(path) {

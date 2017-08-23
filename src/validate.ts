@@ -1,4 +1,9 @@
-function validate_developerSecret(self: HTMLInputElement): void {
+function validateInput(event: Event) {
+  var e = <HTMLInputElement> event.target;
+  eval(e.dataset.callback);
+}
+
+function validateHex(self: HTMLInputElement): void {
   var data = <String> self.value.split("-").join("");
   var array = data.match("^[0-9a-fA-F]*$");
   if (array != null) {
@@ -6,9 +11,4 @@ function validate_developerSecret(self: HTMLInputElement): void {
   } else {
     self.style.backgroundColor = "red";
   }
-}
-
-function validateInput(event: Event) {
-  var element = <HTMLInputElement> event.target;
-  eval(element.dataset.callback);
 }
