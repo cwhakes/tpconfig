@@ -28,6 +28,7 @@ function parseXML(xmlinput: String) {
   paths_checkboxes().split(" ").filter(checkEmpty).forEach( function(path) {importCheckbox(tripos, path)});
   importDropdownUnique(tripos, "host/driver", "host_driver");
   paths_dropdowns().split(" ").filter(checkEmpty).forEach( function(path) {importDropdown(tripos, path)});
+}
 
 function toBool(str: String) {
   if (str.toLowerCase() == "false") {

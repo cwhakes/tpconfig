@@ -18,21 +18,21 @@ function parseXML(xmlinput) {
     paths_checkboxes().split(" ").filter(checkEmpty).forEach(function (path) { importCheckbox(tripos, path); });
     importDropdownUnique(tripos, "host/driver", "host_driver");
     paths_dropdowns().split(" ").filter(checkEmpty).forEach(function (path) { importDropdown(tripos, path); });
-    function toBool(str) {
-        if (str.toLowerCase() == "false") {
-            return false;
-        }
-        else if (str.toLowerCase() == "true") {
-            return true;
-        }
-        else {
-            throw "typeErr";
-        }
+}
+function toBool(str) {
+    if (str.toLowerCase() == "false") {
+        return false;
     }
-    function checkEmpty(str) {
-        if (str.trim().length > 0) {
-            return str;
-        }
+    else if (str.toLowerCase() == "true") {
+        return true;
+    }
+    else {
+        throw "typeErr";
+    }
+}
+function checkEmpty(str) {
+    if (str.trim().length > 0) {
+        return str;
     }
 }
 function paths() {
