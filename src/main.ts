@@ -1,29 +1,71 @@
-function myFunction() {
-    var myfile = <HTMLInputElement> document.getElementById("myFile");
-    var x = myfile.files[0];
-    var fr = new FileReader();
-    fr.onload = function(e){
-      //var text1 = <HTMLInputElement> document.getElementById("text1");
-      //text1.value = fr.result;
-      parseXML(fr.result);
-    };
-    fr.readAsText(x);
+/* Name: main.ts
+Description: Uncategorized functions; see individual descriptions of functions
+Collaborators: Eva Goins, Will Hakes
+Date: 8/22/17-8/23/17
 
+*/
+
+//Passes on values to handlers
+function importWrapper() {
+  var myfile = <HTMLInputElement> document.getElementById("myFile");
+  importXml(myfile);
 }
 
-function parseXML(xmlinput: String) {
-  var configVersion_field = <HTMLInputElement> document.getElementById("configVersion");
-  var developerKey_field = <HTMLInputElement> document.getElementById("developerKey");
+//parses xml to string
+function importXml(myfile: HTMLInputElement) {
+
+    var x = myfile.files[0];
+    var fr = new FileReader();
+
+    //var inputButton = <HTMLInputElement> document.getElementById("inputButton");
+
+    if (typeof(sessionStorage) == "undefined") {
+      alert("No sessionStorage");
+    }
+
+    //inputButton.disabled = true;
+
+    fr.onload = function(e){
+      window.sessionStorage.the_dom = fr.result;
+      //parseXml(fr.result);
+      parseXml()
+      //inputButton.disabled = false;
+    };
+    fr.readAsText(x);
+}
+
+//parses xml and inputs into fields
+function parseXml() {
 
   var parser = new DOMParser();
+  var xmlinput: String = window.sessionStorage.the_dom;
   var the_dom = parser.parseFromString(xmlinput.toString(), "application/xml");
+
+  sessionStorage.setItem("the_dom", xmlinput.toString());
+
   var tripos = the_dom.getElementsByTagName('tripos')[0];
 
-  var configVersion = tripos.getElementsByTagName('configVersion')[0];
-  configVersion_field.value = configVersion.textContent;
+  paths().split(" ").filter(checkEmpty).forEach( function(path) {importTextbox(tripos, path)});
+  paths_checkboxes().split(" ").filter(checkEmpty).forEach( function(path) {importCheckbox(tripos, path)});
+  importDropdownUnique(tripos, "host/driver", "host_driver");
+  importDropdownUnique(tripos, "lanes/serialLane/pinpad/driver", "pinpad_driver");
+  paths_dropdowns().split(" ").filter(checkEmpty).forEach( function(path) {importDropdown(tripos, path)});
+}
 
-  var developers = tripos.getElementsByTagName('developers')[0];
-  var developer = developers.getElementsByTagName('developer')[0];
-  var developerKey = developer.getElementsByTagName('developerKey')[0];
-  developerKey_field.value = developerKey.textContent;
+//parses to boolean value
+function toBool(str: String) {
+  if (str.toLowerCase() == "false") {
+    return false;
+  } else if (str.toLowerCase() == "true") {
+    return true;
+  } else {
+    throw "typeErr"
+  }
+}
+
+//checks if string is empty
+function checkEmpty(str: String) {
+  if (str.trim().length > 0) {
+    return str;
+  }
 }
