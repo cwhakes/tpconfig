@@ -1,5 +1,5 @@
 /* Name: validate.ts
-Description: Validates all the field on the form and 
+Description: Validates all the field on the form and
   ensures they match formatting specifics
 Collaborators: Eva Goins, Will Hakes
 Date: 8/22/17-8/23/17
@@ -32,15 +32,15 @@ function validateInt(self: HTMLInputElement): void {
   }
 }
 
-//validates a string to include only integers and 
+//validates a string to include only integers and
 //takes into consideration a %, a comma, and a space
 function validateStringInt(self: HTMLInputElement): void {
   var regex = "/[^0-9%,\s]+/g";
-  var result = self.match(regex);
-  if (result == false) {
+  var result = self.value.match(regex);
+  if (result != null && result[0].length > 0) {
 	self.style.backgroundColor = "white";
   } else {
-	self.style.backgroundCOlor = "red";
+	self.style.backgroundColor = "red";
   }
 }
 
