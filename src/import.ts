@@ -1,3 +1,28 @@
+function getField(path:String):HTMLInputElement {
+  var checkpoints = path.trim().split("/");
+  var element_name = checkpoints[checkpoints.length - 1];
+  var field = <HTMLInputElement> document.getElementById(element_name);
+  return field;
+}
+
+function importTextbox(root:Element, path:String) {
+    var checkpoints = path.trim().split("/");
+    var element_name = checkpoints[checkpoints.length - 1];
+    var field = <HTMLInputElement> document.getElementById(element_name);
+
+    try {
+      field.value = <string> get_value(root, path);
+      field.style.backgroundColor = "White";
+    } catch(err) {
+      var ignore = err;
+      field.value = "ERROR";
+      field.style.backgroundColor = "Red";
+    }
+
+    var e = field;
+    eval(e.dataset.callback);
+}
+
 function importCheckbox(root:Element, path:String) {
   var checkpoints = path.trim().split("/");
   var element_name = checkpoints[checkpoints.length - 1];

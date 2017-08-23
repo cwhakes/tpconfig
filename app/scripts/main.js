@@ -142,6 +142,12 @@ function exportXml(dom) {
     file.WriteLine('</tripos>');
     file.Close();
 }
+function getField(path) {
+    var checkpoints = path.trim().split("/");
+    var element_name = checkpoints[checkpoints.length - 1];
+    var field = document.getElementById(element_name);
+    return field;
+}
 function importTextbox(root, path) {
     var checkpoints = path.trim().split("/");
     var element_name = checkpoints[checkpoints.length - 1];
