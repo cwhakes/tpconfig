@@ -73,7 +73,7 @@ host/accountToken \
 host/autoReversalRetryLimit \
 application/pinPadIdleMessage \
 application/corsAllowedOrigins \
-transaction/CreditAvsEntryCondition \
+transaction/creditAvsEntryCondition \
 transaction/cashbackSelections \
 transaction/cashbackAmountIncrement \
 transaction/maximumCashbackAmount \
@@ -83,7 +83,7 @@ transaction/creditSaleSignatureThresholdAmount \
 transaction/signatureFormat \
 transaction/emvFallbackAllowed \
 lanes/serialLane/description \
-lanes/serialLane/laneID \
+lanes/serialLane/laneId \
 lanes/serialLane/pinpad/comPort \
 lanes/serialLane/pinpad/dataBits \
 lanes/serialLane/pinpad/parity \
