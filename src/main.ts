@@ -87,7 +87,3 @@ function get_value(tripos:Element, path: String): String {
 
   return location.textContent;
 }
-
-function exportXml() {
-	//document.write("Hello World!");
-}
