@@ -14,22 +14,7 @@ function parseXML(xmlinput) {
     var parser = new DOMParser();
     var the_dom = parser.parseFromString(xmlinput.toString(), "application/xml");
     var tripos = the_dom.getElementsByTagName('tripos')[0];
-    paths().split(" ").filter(checkEmpty).forEach(function (path) {
-        var checkpoints = path.trim().split("/");
-        var element_name = checkpoints[checkpoints.length - 1];
-        var field = document.getElementById(element_name);
-        try {
-            field.value = get_value(tripos, path);
-            field.style.backgroundColor = "White";
-        }
-        catch (err) {
-            var ignore = err;
-            field.value = "ERROR";
-            field.style.backgroundColor = "Red";
-        }
-        var e = field;
-        eval(e.dataset.callback);
-    });
+    paths().split(" ").filter(checkEmpty).forEach(function (path) { importTextbox(tripos, path); });
     paths_checkboxes().split(" ").filter(checkEmpty).forEach(function (path) { importCheckbox(tripos, path); });
     paths_dropdowns().split(" ").filter(checkEmpty).forEach(function (path) { importDropdown(tripos, path); });
 }
@@ -156,6 +141,22 @@ function exportXml(dom) {
     file.WriteLine('<!-- This is comment 2-->\n');
     file.WriteLine('</tripos>');
     file.Close();
+}
+function importTextbox(root, path) {
+    var checkpoints = path.trim().split("/");
+    var element_name = checkpoints[checkpoints.length - 1];
+    var field = document.getElementById(element_name);
+    try {
+        field.value = get_value(root, path);
+        field.style.backgroundColor = "White";
+    }
+    catch (err) {
+        var ignore = err;
+        field.value = "ERROR";
+        field.style.backgroundColor = "Red";
+    }
+    var e = field;
+    eval(e.dataset.callback);
 }
 function importCheckbox(root, path) {
     var checkpoints = path.trim().split("/");

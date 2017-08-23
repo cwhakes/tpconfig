@@ -19,36 +19,13 @@ function importXml(myfile: HTMLInputElement) {
 
 //parses xml and put into fields
 function parseXML(xmlinput: String) {
-  //var configVersion_field = <HTMLInputElement> document.getElementById("configVersion");
-  //var developerKey_field = <HTMLInputElement> document.getElementById("developerKey");
 
   var parser = new DOMParser();
   var the_dom = parser.parseFromString(xmlinput.toString(), "application/xml");
   var tripos = the_dom.getElementsByTagName('tripos')[0];
 
-  //configVersion_field.value = <string> get_value(tripos, "configVersion");
-  //developerKey_field.value = <string> get_value(tripos, "developers/developer/developerKey");
-
-  paths().split(" ").filter(checkEmpty).forEach( function(path) {
-    var checkpoints = path.trim().split("/");
-    var element_name = checkpoints[checkpoints.length - 1];
-    var field = <HTMLInputElement> document.getElementById(element_name);
-
-    try {
-      field.value = <string> get_value(tripos, path);
-      field.style.backgroundColor = "White";
-    } catch(err) {
-      var ignore = err;
-      field.value = "ERROR";
-      field.style.backgroundColor = "Red";
-    }
-
-    var e = field;
-    eval(e.dataset.callback);
-  });
-
+  paths().split(" ").filter(checkEmpty).forEach( function(path) {importTextbox(tripos, path)});
   paths_checkboxes().split(" ").filter(checkEmpty).forEach( function(path) {importCheckbox(tripos, path)});
-
   paths_dropdowns().split(" ").filter(checkEmpty).forEach( function(path) {importDropdown(tripos, path)});
 
 }
