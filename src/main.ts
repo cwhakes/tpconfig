@@ -27,6 +27,7 @@ function parseXML(xmlinput: String) {
   paths().split(" ").filter(checkEmpty).forEach( function(path) {importTextbox(tripos, path)});
   paths_checkboxes().split(" ").filter(checkEmpty).forEach( function(path) {importCheckbox(tripos, path)});
   importDropdownUnique(tripos, "host/driver", "host_driver");
+  importDropdownUnique(tripos, "lanes/serialLane/pinpad/driver", "pinpad_driver");
   paths_dropdowns().split(" ").filter(checkEmpty).forEach( function(path) {importDropdown(tripos, path)});
 }
 
