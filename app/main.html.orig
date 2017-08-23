@@ -35,11 +35,15 @@ TODO:
 					<input type=text class="developerKey" id="developerKey" value="default value" readonly><br><br>
 
 					Developer Secret <br>
+<<<<<<< Updated upstream:app/main.html.orig
 <<<<<<< HEAD
 					<input type=text class="developerSecret" id="developerSecret" value="default value" data-callback="validate_developerSecret">
 =======
 					<input type=text class="developerSecret" id="developerSecret" value="default value" onchange="validate_developerSecret(this)">
 >>>>>>> d9e3987bf8e4773433c36c50862b2e34ceb4a52b
+=======
+					<input type=text class="developerSecret" id="developerSecret" value="default value" oninput="validate_developerSecret(this)">
+>>>>>>> Stashed changes:app/main.html
 				</fieldset>
 
 				<br>
