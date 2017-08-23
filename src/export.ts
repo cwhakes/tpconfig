@@ -1,6 +1,6 @@
 
 var xmlDoc = new ActiveXObject("Microsoft.XMLDOM");
-var fso = new ActiveXObject("Scription.FileSystemObject");
+var fso = new ActiveXObject("Scripting.FileSystemObject");
 var FILENAME = 'test.xml';
 
 //dom:Document
