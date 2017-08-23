@@ -27,5 +27,6 @@ function validateStringInt(self: HTMLInputElement): void {
 }
 
 function validateBool(self: HTMLElement): void {
-  self.style.backgroundColor = "white";
+  var label = <HTMLElement> self.nextElementSibling;
+  label.style.backgroundColor = "White";
 }

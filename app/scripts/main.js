@@ -138,6 +138,7 @@ function validateInt(self) {
 function validateStringInt(self) {
 }
 function validateBool(self) {
-    self.style.backgroundColor = "white";
+    var label = self.nextElementSibling;
+    label.style.backgroundColor = "White";
 }
 //# sourceMappingURL=main.js.map
