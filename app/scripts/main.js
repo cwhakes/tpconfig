@@ -122,6 +122,10 @@ function validateBool(self) {
     var label = self.nextElementSibling;
     label.style.backgroundColor = "white";
 }
+function validateDropdown(self) {
+    var label = self.previousElementSibling.previousElementSibling;
+    label.style.backgroundColor = "white";
+}
 function validateNone(self) {
     self.style.backgroundColor = "white";
 }

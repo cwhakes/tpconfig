@@ -50,6 +50,11 @@ function validateBool(self: HTMLElement): void {
   label.style.backgroundColor = "white";
 }
 
+function validateDropdown(self: HTMLElement): void {
+  var label = <HTMLElement> self.previousElementSibling.previousElementSibling;
+  label.style.backgroundColor = "white";
+}
+
 function validateNone(self: HTMLElement): void {
   self.style.backgroundColor = "white";
 }
