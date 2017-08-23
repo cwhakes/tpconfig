@@ -6,7 +6,7 @@ function validateInput(event: Event) {
 function validateHex(self: HTMLInputElement): void {
   var data = <String> self.value.split("-").join("");
   var array = data.match("^[0-9a-fA-F]*$");
-  if (array != null && array.length > 0) {
+  if (array != null && array[0].length > 0) {
     self.style.backgroundColor = "white";
   } else {
     self.style.backgroundColor = "red";
