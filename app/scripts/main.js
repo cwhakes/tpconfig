@@ -118,4 +118,8 @@ function validate_developerSecret(self) {
         self.style.backgroundColor = "red";
     }
 }
+function validateInput(event) {
+    var element = event.target;
+    eval(element.dataset.callback);
+}
 //# sourceMappingURL=main.js.map

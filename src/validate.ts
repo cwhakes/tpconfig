@@ -7,3 +7,8 @@ function validate_developerSecret(self: HTMLInputElement): void {
     self.style.backgroundColor = "red";
   }
 }
+
+function validateInput(event: Event) {
+  var element = <HTMLInputElement> event.target;
+  eval(element.dataset.callback);
+}
