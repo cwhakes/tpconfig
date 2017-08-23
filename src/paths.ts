@@ -24,7 +24,6 @@ lanes/serialLane/laneId \
 lanes/serialLane/pinpad/comPort \
 lanes/serialLane/pinpad/dataBits \
 lanes/serialLane/pinpad/parity \
-lanes/serialLane/pinpad/stopBits \
 lanes/serialLane/host/terminalId \
 ".trim();
 }
@@ -49,6 +48,7 @@ lanes/serialLane/pinpad/isContactlessMsdEntryAllowed \
 
 function paths_dropdowns():String {
   return " \
+lanes/serialLane/pinpad/stopBits \
 transaction/currencyCode \
 transaction/marketCode \
 lanes/serialLane/pinpad/terminalType \
