@@ -15,8 +15,8 @@ function validateInput(event: Event) {
 //validates a string only includes alphanumeric
 function validateHex(self: HTMLInputElement): void {
   var data = <String> self.value.split("-").join("");
-  var result = data.match("^[0-9a-fA-F]*$");
-  if (result != null && result[0].length > 0) {
+  var result = data.match("^[0-9a-fA-F]+$");
+  if (result != null) {
     self.style.backgroundColor = "white";
   } else {
     self.style.backgroundColor = "red";
@@ -35,12 +35,12 @@ function validateInt(self: HTMLInputElement): void {
 //validates a string to include only integers and
 //takes into consideration a %, a comma, and a space
 function validateStringInt(self: HTMLInputElement): void {
-  var regex = "/[^0-9%,\s]+/g";
+  var regex = "^[0-9%,\\s]*$";
   var result = self.value.match(regex);
-  if (result != null && result[0].length > 0) {
-	self.style.backgroundColor = "white";
+  if (result != null) {
+	   self.style.backgroundColor = "white";
   } else {
-	self.style.backgroundColor = "red";
+	   self.style.backgroundColor = "red";
   }
 }
 

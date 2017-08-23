@@ -114,8 +114,8 @@ function validateInput(event) {
 }
 function validateHex(self) {
     var data = self.value.split("-").join("");
-    var result = data.match("^[0-9a-fA-F]*$");
-    if (result != null && result[0].length > 0) {
+    var result = data.match("^[0-9a-fA-F]+$");
+    if (result != null) {
         self.style.backgroundColor = "white";
     }
     else {
@@ -131,9 +131,9 @@ function validateInt(self) {
     }
 }
 function validateStringInt(self) {
-    var regex = "/[^0-9%,\s]+/g";
+    var regex = "^[0-9%,\\s]*$";
     var result = self.value.match(regex);
-    if (result != null && result[0].length > 0) {
+    if (result != null) {
         self.style.backgroundColor = "white";
     }
     else {
