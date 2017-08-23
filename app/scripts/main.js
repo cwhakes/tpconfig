@@ -28,26 +28,7 @@ function parseXML(xmlinput) {
         eval(e.dataset.callback);
     });
     paths_checkboxes().split(" ").filter(checkEmpty).forEach(function (path) { importCheckbox(tripos, path); });
-    paths_dropdowns().split(" ").filter(checkEmpty).forEach(function (path) {
-        var field = document.getElementById("host_driver");
-        try {
-            var value = get_value(tripos, path);
-            for (var i = 0; i <= field.children.length; i++) {
-                var child = field.children[i];
-                if (child.value == value) {
-                    field.value = value.toString();
-                    break;
-                }
-            }
-            var label = field.previousElementSibling.previousElementSibling;
-            label.style.backgroundColor = "White";
-        }
-        catch (err) {
-            var ignore = err;
-            var label = field.previousElementSibling.previousElementSibling;
-            label.style.backgroundColor = "Red";
-        }
-    });
+    paths_dropdowns().split(" ").filter(checkEmpty).forEach(function (path) { importDropdown(tripos, path); });
 }
 function toBool(str) {
     if (str.toLowerCase() == "false") {
@@ -176,6 +157,26 @@ function importCheckbox(root, path) {
     catch (err) {
         var ignore = err;
         var label = field.nextElementSibling;
+        label.style.backgroundColor = "Red";
+    }
+}
+function importDropdown(root, path) {
+    var field = document.getElementById("host_driver");
+    try {
+        var value = get_value(root, path);
+        for (var i = 0; i <= field.children.length; i++) {
+            var child = field.children[i];
+            if (child.value == value) {
+                field.value = value.toString();
+                break;
+            }
+        }
+        var label = field.previousElementSibling.previousElementSibling;
+        label.style.backgroundColor = "White";
+    }
+    catch (err) {
+        var ignore = err;
+        var label = field.previousElementSibling.previousElementSibling;
         label.style.backgroundColor = "Red";
     }
 }
