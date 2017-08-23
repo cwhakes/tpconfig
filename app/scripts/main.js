@@ -34,14 +34,6 @@ function checkEmpty(str) {
         return str;
     }
 }
-function get_value(tripos, path) {
-    var location = tripos;
-    var checkpoints = path.split("/");
-    checkpoints.forEach(function (cp) {
-        location = location.getElementsByTagName(cp.trim())[0];
-    });
-    return location.textContent;
-}
 function paths() {
     return " \
 configVersion \
@@ -148,12 +140,18 @@ function getField(path) {
     var field = document.getElementById(element_name);
     return field;
 }
+function getValue(tripos, path) {
+    var location = tripos;
+    var checkpoints = path.split("/");
+    checkpoints.forEach(function (cp) {
+        location = location.getElementsByTagName(cp.trim())[0];
+    });
+    return location.textContent;
+}
 function importTextbox(root, path) {
-    var checkpoints = path.trim().split("/");
-    var element_name = checkpoints[checkpoints.length - 1];
-    var field = document.getElementById(element_name);
+    var field = getField(path);
     try {
-        field.value = get_value(root, path);
+        field.value = getValue(root, path);
         field.style.backgroundColor = "White";
     }
     catch (err) {
@@ -165,11 +163,9 @@ function importTextbox(root, path) {
     eval(e.dataset.callback);
 }
 function importCheckbox(root, path) {
-    var checkpoints = path.trim().split("/");
-    var element_name = checkpoints[checkpoints.length - 1];
-    var field = document.getElementById(element_name);
+    var field = getField(path);
     try {
-        field.checked = toBool(get_value(root, path));
+        field.checked = toBool(getValue(root, path));
         var label = field.nextElementSibling;
         label.style.backgroundColor = "White";
     }
@@ -182,7 +178,7 @@ function importCheckbox(root, path) {
 function importDropdown(root, path) {
     var field = document.getElementById("host_driver");
     try {
-        var value = get_value(root, path);
+        var value = getValue(root, path);
         for (var i = 0; i <= field.children.length; i++) {
             var child = field.children[i];
             if (child.value == value) {

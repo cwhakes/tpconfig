@@ -5,13 +5,23 @@ function getField(path:String):HTMLInputElement {
   return field;
 }
 
+//get the xml element specified by a path
+function getValue(tripos:Element, path: String): String {
+  var location = tripos;
+  var checkpoints = path.split("/");
+
+  checkpoints.forEach( function(cp) {
+    location = location.getElementsByTagName(cp.trim())[0];
+  });
+
+  return location.textContent;
+}
+
 function importTextbox(root:Element, path:String) {
-    var checkpoints = path.trim().split("/");
-    var element_name = checkpoints[checkpoints.length - 1];
-    var field = <HTMLInputElement> document.getElementById(element_name);
+    var field = getField(path);
 
     try {
-      field.value = <string> get_value(root, path);
+      field.value = <string> getValue(root, path);
       field.style.backgroundColor = "White";
     } catch(err) {
       var ignore = err;
@@ -24,12 +34,9 @@ function importTextbox(root:Element, path:String) {
 }
 
 function importCheckbox(root:Element, path:String) {
-  var checkpoints = path.trim().split("/");
-  var element_name = checkpoints[checkpoints.length - 1];
-  var field = <HTMLInputElement> document.getElementById(element_name);
-
+  var field = getField(path);
   try {
-    field.checked = <boolean> toBool(get_value(root, path));
+    field.checked = <boolean> toBool(getValue(root, path));
     var label = <HTMLElement> field.nextElementSibling;
     label.style.backgroundColor = "White";
   } catch(err) {
@@ -47,7 +54,7 @@ function importDropdown(root: Element, path:String) {
 
 
   try {
-    var value = <String> get_value(root, path);
+    var value = <String> getValue(root, path);
 
     for (var i = 0; i <= field.children.length; i++) {
       var child = <HTMLInputElement> field.children[i];

@@ -46,15 +46,3 @@ function checkEmpty(str: String) {
     return str;
   }
 }
-
-//get the xml element specified by a path
-function get_value(tripos:Element, path: String): String {
-  var location = tripos;
-  var checkpoints = path.split("/");
-
-  checkpoints.forEach( function(cp) {
-    location = location.getElementsByTagName(cp.trim())[0];
-  });
-
-  return location.textContent;
-}
