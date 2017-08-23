@@ -44,17 +44,19 @@ function validateStringInt(self: HTMLInputElement): void {
   }
 }
 
-//validates boolean values
+//validates boolean values; makes valid when edited
 function validateBool(self: HTMLElement): void {
   var label = <HTMLElement> self.nextElementSibling;
   label.style.backgroundColor = "white";
 }
 
+//validates dropdown menus; makes valid when edited
 function validateDropdown(self: HTMLElement): void {
   var label = <HTMLElement> self.previousElementSibling.previousElementSibling;
   label.style.backgroundColor = "white";
 }
 
+//sets fields to white that do not require validation
 function validateNone(self: HTMLElement): void {
   self.style.backgroundColor = "white";
 }

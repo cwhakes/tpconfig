@@ -1,32 +1,23 @@
-/*
-var xmlDoc = new ActiveXObject("Microsoft.XMLDOM");
-var fso = new ActiveXObject("Scripting.FileSystemObject");
-var FILENAME = 'test.xml';
+/* Name: export.ts
+Description: Exports the xml document to an external XML file
+Collaborators: Eva Goins, Will Hakes
+Date: 8/22/17-8/23/17
 
-//dom:Document
-function exportXml(dom: Document):void {
-
-	var file = fso.CreateTextFile(FILENAME, true);
-	file.WriteLine('<?xml version="1.0" encoding="utf-8"?>\n');
-	file.WriteLine('<tripos xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">\n');
-	var configVersion = <HTMLInputElement> dom.getElementById("configVersion");
-	file.WriteLine('<' + dom.getElementById("configVersion").id + '>' + configVersion.value + '</' + dom.getElementById("configVersion").id + '>\n');
-	file.WriteLine('<!-- This is comment 2-->\n');
-	file.WriteLine('</tripos>');
-
-	file.Close();
-}
+TO-DO: 
+  -- Write fields into exported file rather than exporting open file
 */
 
-
+//On-click event for Export button
 function exportXml(): void {
 	var data: String = window.sessionStorage.the_dom;
 	download(data, "triposconfig", "XML");
 }
 
+//Pulls a file to export. 
+//If msblob is supported, use it. If not, use alternative.
 function download(data:any, filename:any, type:any) {
 	var file = new Blob([data], {type: type});
-	if (window.navigator.msSaveOrOpenBlob) {//IE10
+	if (window.navigator.msSaveOrOpenBlob) {
 		window.navigator.msSaveOrOpenBlob(file, filename);
 	} else {
 		var a = document.createElement("a"),

@@ -1,3 +1,11 @@
+/* Name: import.ts
+Description: Exports the xml document to an external XML file
+Collaborators: Eva Goins, Will Hakes
+Date: 8/22/17-8/23/17
+
+*/
+
+//Get the elements by HTML ID
 function getField(path:String):HTMLInputElement {
   var checkpoints = path.trim().split("/");
   var element_name = checkpoints[checkpoints.length - 1];
@@ -17,6 +25,7 @@ function getValue(tripos:Element, path: String): String {
   return location.textContent;
 }
 
+//add values to textboxes
 function importTextbox(root:Element, path:String) {
     var field = getField(path);
 
@@ -33,6 +42,7 @@ function importTextbox(root:Element, path:String) {
     eval(e.dataset.callback);
 }
 
+//add values to checkboxes
 function importCheckbox(root:Element, path:String) {
   var field = getField(path);
   try {
@@ -46,6 +56,8 @@ function importCheckbox(root:Element, path:String) {
   }
 }
 
+//add values to dropdowns. 
+//NOTE: Does not work for tags that have similar tagnames
 function importDropdown(root: Element, path:String) {
   var field = getField(path);
 
@@ -68,6 +80,8 @@ function importDropdown(root: Element, path:String) {
   }
 }
 
+//add values to dropdowns
+//NOTE: Takes into consideration nonunique tagnames
 function importDropdownUnique(root: Element, path:String, id:String) {
   var field = <HTMLInputElement> document.getElementById(id.toString());
 

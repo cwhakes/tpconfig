@@ -1,9 +1,17 @@
+/* Name: main.ts
+Description: Uncategorized functions; see individual descriptions of functions
+Collaborators: Eva Goins, Will Hakes
+Date: 8/22/17-8/23/17
+
+*/
+
+//Passes on values to handlers
 function importWrapper() {
   var myfile = <HTMLInputElement> document.getElementById("myFile");
   importXml(myfile);
 }
 
-//imports xml to string
+//parses xml to string
 function importXml(myfile: HTMLInputElement) {
 
     var x = myfile.files[0];
@@ -26,7 +34,7 @@ function importXml(myfile: HTMLInputElement) {
     fr.readAsText(x);
 }
 
-//parses xml and put into fields
+//parses xml and inputs into fields
 function parseXml() {
 
   var parser = new DOMParser();
@@ -44,6 +52,7 @@ function parseXml() {
   paths_dropdowns().split(" ").filter(checkEmpty).forEach( function(path) {importDropdown(tripos, path)});
 }
 
+//parses to boolean value
 function toBool(str: String) {
   if (str.toLowerCase() == "false") {
     return false;
