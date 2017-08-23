@@ -27,21 +27,7 @@ function parseXML(xmlinput) {
         var e = field;
         eval(e.dataset.callback);
     });
-    paths_checkboxes().split(" ").filter(checkEmpty).forEach(function (path) {
-        var checkpoints = path.trim().split("/");
-        var element_name = checkpoints[checkpoints.length - 1];
-        var field = document.getElementById(element_name);
-        try {
-            field.checked = toBool(get_value(tripos, path));
-            var label = field.nextElementSibling;
-            label.style.backgroundColor = "White";
-        }
-        catch (err) {
-            var ignore = err;
-            var label = field.nextElementSibling;
-            label.style.backgroundColor = "Red";
-        }
-    });
+    paths_checkboxes().split(" ").filter(checkEmpty).forEach(function (path) { importCheckbox(tripos, path); });
     paths_dropdowns().split(" ").filter(checkEmpty).forEach(function (path) {
         var field = document.getElementById("host_driver");
         try {
@@ -167,14 +153,30 @@ function validateBool(self) {
     label.style.backgroundColor = "White";
 }
 var xmlDoc = new ActiveXObject("Microsoft.XMLDOM");
-var fso = new ActiveXObject("Scription.FileSystemObject");
+var fso = new ActiveXObject("Scripting.FileSystemObject");
 var FILENAME = 'test.xml';
 function exportXml() {
     var file = fso.CreateTextFile(FILENAME, true);
     file.WriteLine('<?xml version="1.0" encoding="utf-8"?>\n');
     file.WriteLine('<tripos xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">\n');
     file.WriteLine('<!-- This is a comment-->\n');
+    file.WriteLine('<!-- This is comment 2-->\n');
     file.WriteLine('</tripos>');
     file.Close();
+}
+function importCheckbox(root, path) {
+    var checkpoints = path.trim().split("/");
+    var element_name = checkpoints[checkpoints.length - 1];
+    var field = document.getElementById(element_name);
+    try {
+        field.checked = toBool(get_value(root, path));
+        var label = field.nextElementSibling;
+        label.style.backgroundColor = "White";
+    }
+    catch (err) {
+        var ignore = err;
+        var label = field.nextElementSibling;
+        label.style.backgroundColor = "Red";
+    }
 }
 //# sourceMappingURL=main.js.map
