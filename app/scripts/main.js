@@ -5,15 +5,12 @@ function importWrapper() {
 function importXml(myfile) {
     var x = myfile.files[0];
     var fr = new FileReader();
-    var inputButton = document.getElementById("inputButton");
     if (typeof (sessionStorage) == "undefined") {
         alert("No sessionStorage");
     }
-    inputButton.disabled = true;
     fr.onload = function (e) {
         window.sessionStorage.the_dom = fr.result;
         parseXml();
-        inputButton.disabled = false;
     };
     fr.readAsText(x);
 }
@@ -71,7 +68,6 @@ lanes/serialLane/laneId \
 lanes/serialLane/pinpad/comPort \
 lanes/serialLane/pinpad/dataBits \
 lanes/serialLane/pinpad/parity \
-lanes/serialLane/pinpad/stopBits \
 lanes/serialLane/host/terminalId \
 ".trim();
 }
@@ -93,6 +89,7 @@ lanes/serialLane/pinpad/isContactlessMsdEntryAllowed \
 }
 function paths_dropdowns() {
     return " \
+lanes/serialLane/pinpad/stopBits \
 transaction/currencyCode \
 transaction/marketCode \
 lanes/serialLane/pinpad/terminalType \
@@ -142,19 +139,6 @@ function validateDropdown(self) {
 }
 function validateNone(self) {
     self.style.backgroundColor = "white";
-}
-var xmlDoc = new ActiveXObject("Microsoft.XMLDOM");
-var fso = new ActiveXObject("Scripting.FileSystemObject");
-var FILENAME = 'test.xml';
-function exportXml(dom) {
-    var file = fso.CreateTextFile(FILENAME, true);
-    file.WriteLine('<?xml version="1.0" encoding="utf-8"?>\n');
-    file.WriteLine('<tripos xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">\n');
-    var configVersion = dom.getElementById("configVersion");
-    file.WriteLine('<' + dom.getElementById("configVersion").id + '>' + configVersion.value + '</' + dom.getElementById("configVersion").id + '>\n');
-    file.WriteLine('<!-- This is comment 2-->\n');
-    file.WriteLine('</tripos>');
-    file.Close();
 }
 function getField(path) {
     var checkpoints = path.trim().split("/");

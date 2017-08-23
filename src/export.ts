@@ -1,4 +1,4 @@
-
+/*
 var xmlDoc = new ActiveXObject("Microsoft.XMLDOM");
 var fso = new ActiveXObject("Scripting.FileSystemObject");
 var FILENAME = 'test.xml';
@@ -16,3 +16,4 @@ function exportXml(dom: Document):void {
 
 	file.Close();
 }
+*/

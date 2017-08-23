@@ -1,4 +1,3 @@
-
 function importWrapper() {
   var myfile = <HTMLInputElement> document.getElementById("myFile");
   importXml(myfile);
@@ -10,19 +9,19 @@ function importXml(myfile: HTMLInputElement) {
     var x = myfile.files[0];
     var fr = new FileReader();
 
-    var inputButton = <HTMLInputElement> document.getElementById("inputButton");
+    //var inputButton = <HTMLInputElement> document.getElementById("inputButton");
 
     if (typeof(sessionStorage) == "undefined") {
       alert("No sessionStorage");
     }
 
-    inputButton.disabled = true;
+    //inputButton.disabled = true;
 
     fr.onload = function(e){
       window.sessionStorage.the_dom = fr.result;
       //parseXml(fr.result);
       parseXml()
-      inputButton.disabled = false;
+      //inputButton.disabled = false;
     };
     fr.readAsText(x);
 }
