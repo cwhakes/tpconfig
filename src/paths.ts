@@ -49,15 +49,14 @@ lanes/serialLane/pinpad/isContactlessMsdEntryAllowed \
 
 function paths_dropdowns():String {
   return " \
-   \
-  ".trim();
-}
-/*
-host/driver \
 transaction/currencyCode \
 transaction/marketCode \
 lanes/serialLane/pinpad/terminalType \
-lanes/serialLane/pinpad/driver
 lanes/serialLane/pinpad/handshake \
 lanes/serialLane/pinpad/baudRate \
+  ".trim();
+}
+/*
+*host/driver \
+*lanes/serialLane/pinpad/driver
 */
