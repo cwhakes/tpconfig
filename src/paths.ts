@@ -38,6 +38,7 @@ transaction/confirmOriginalAmount \
 transaction/checkForDuplicateTransactions \
 transaction/isCashbackAllowed \
 transaction/isDebitSupported \
+transaction/isEmvSupported \
 transaction/isGiftSupported \
 transaction/confirmConvenienceFeeAmount \
 transaction/isHealthcareSupported \
