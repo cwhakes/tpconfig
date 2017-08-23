@@ -57,6 +57,26 @@ function parseXML(xmlinput: String) {
       label.style.backgroundColor = "Red";
     }
   });
+
+  paths_dropdowns().split(" ").filter(checkEmpty).forEach( function(path) {
+    var checkpoints = path.trim().split("/");
+    var element_name = checkpoints[checkpoints.length - 1];
+    var field = <HTMLInputElement> document.getElementById(element_name);
+
+    for (var i = 0; i < field.children.length; i++) {
+      var child = field.children[i];
+      if child.value ==
+
+    try {
+      field.checked = <boolean> toBool(get_value(tripos, path));
+      var label = <HTMLElement> field.nextElementSibling;
+      label.style.backgroundColor = "White";
+    } catch(err) {
+      var ignore = err;
+      var label = <HTMLElement> field.nextElementSibling;
+      label.style.backgroundColor = "Red";
+    }
+  });
 }
 
 function toBool(str: String) {

@@ -46,6 +46,12 @@ lanes/serialLane/pinpad/isManualEntryAllowed \
 lanes/serialLane/pinpad/isContactlessMsdEntryAllowed \
   ".trim();
 }
+
+function paths_dropdowns():String {
+  return " \
+  host/driver \
+  ".trim();
+}
 /*
 host/driver \
 transaction/currencyCode \

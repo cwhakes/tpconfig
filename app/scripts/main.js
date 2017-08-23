@@ -1,4 +1,4 @@
-function myFunction() {
+function importXml() {
     var myfile = document.getElementById("myFile");
     var x = myfile.files[0];
     var fr = new FileReader();
@@ -42,6 +42,26 @@ function parseXML(xmlinput) {
             label.style.backgroundColor = "Red";
         }
     });
+    paths_dropdowns().split(" ").filter(checkEmpty).forEach(function (path) {
+        var checkpoints = path.trim().split("/");
+        var element_name = checkpoints[checkpoints.length - 1];
+        var field = document.getElementById(element_name);
+        for (var i = 0; i < field.children.length; i++) {
+            var child = field.children[i];
+            if (child.value ==
+            )
+                try {
+                    field.checked = toBool(get_value(tripos, path));
+                    var label = field.nextElementSibling;
+                    label.style.backgroundColor = "White";
+                }
+                catch (err) {
+                    var ignore = err;
+                    var label = field.nextElementSibling;
+                    label.style.backgroundColor = "Red";
+                }
+        }
+    });
 }
 function toBool(str) {
     if (str.toLowerCase() == "false") {
@@ -66,6 +86,8 @@ function get_value(tripos, path) {
         location = location.getElementsByTagName(cp.trim())[0];
     });
     return location.textContent;
+}
+function exportXml() {
 }
 function paths() {
     return " \
@@ -111,6 +133,11 @@ transaction/confirmConvenienceFeeAmount \
 transaction/isHealthcareSupported \
 lanes/serialLane/pinpad/isManualEntryAllowed \
 lanes/serialLane/pinpad/isContactlessMsdEntryAllowed \
+  ".trim();
+}
+function paths_dropdowns() {
+    return " \
+  host/driver \
   ".trim();
 }
 function validateInput(event) {
