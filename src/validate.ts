@@ -12,3 +12,20 @@ function validateHex(self: HTMLInputElement): void {
     self.style.backgroundColor = "red";
   }
 }
+
+function validateInt(self: HTMLInputElement): void {
+  if (!isNaN(Number(self.value))) {
+    self.style.backgroundColor = "white";
+  } else {
+    self.style.backgroundColor = "red";
+  }
+}
+
+
+function validateStringInt(self: HTMLInputElement): void {
+
+}
+
+function validateBool(self: HTMLElement): void {
+  self.style.backgroundColor = "white";
+}

@@ -33,6 +33,8 @@ function parseXML(xmlinput) {
         var field = document.getElementById(element_name);
         try {
             field.checked = toBool(get_value(tripos, path));
+            var label = field.nextElementSibling;
+            label.style.backgroundColor = "White";
         }
         catch (err) {
             var ignore = err;
@@ -124,5 +126,18 @@ function validateHex(self) {
     else {
         self.style.backgroundColor = "red";
     }
+}
+function validateInt(self) {
+    if (!isNaN(Number(self.value))) {
+        self.style.backgroundColor = "white";
+    }
+    else {
+        self.style.backgroundColor = "red";
+    }
+}
+function validateStringInt(self) {
+}
+function validateBool(self) {
+    self.style.backgroundColor = "white";
 }
 //# sourceMappingURL=main.js.map

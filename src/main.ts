@@ -50,6 +50,8 @@ function parseXML(xmlinput: String) {
 
     try {
       field.checked = <boolean> toBool(get_value(tripos, path));
+      var label = <HTMLElement> field.nextElementSibling;
+      label.style.backgroundColor = "White";
     } catch(err) {
       var ignore = err;
       var label = <HTMLElement> field.nextElementSibling;
