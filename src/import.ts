@@ -47,11 +47,7 @@ function importCheckbox(root:Element, path:String) {
 }
 
 function importDropdown(root: Element, path:String) {
-  //var checkpoints = path.trim().split("/");
-  //var element_name = checkpoints[checkpoints.length - 1];
-  //var field = <HTMLInputElement> document.getElementById(element_name);
-  var field = <HTMLInputElement> document.getElementById("host_driver");
-
+  var field = getField(path);
 
   try {
     var value = <String> getValue(root, path);
