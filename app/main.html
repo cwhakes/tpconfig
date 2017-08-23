@@ -35,7 +35,7 @@ TODO:
 					<input type=text class="developerKey" id="developerKey" value="default value" readonly><br><br>
 					
 					Developer Secret <br>
-					<input type=text class="developerSecret" id="developerSecret" value="default value" oninput="validate_developerSecret(this)">
+					<input type=text class="developerSecret" id="developerSecret" value="default value" data-callback="validate_developerSecret">
 				</fieldset>
 				
 				<br>
@@ -47,7 +47,7 @@ TODO:
 					Listening Port<br>
 					<input type=text class="listeningPort" id="listeningPort" value="default value"><br><br>
 					
-					Driver<br>
+					<label for="host_driver">Driver</label><br>
 					<select name="driver" class="driver" id="host_driver">
 						<option value="Express">Express</option>
 						<option value="Null">None</option>
@@ -100,7 +100,7 @@ TODO:
 					<input type="checkbox" class="checkForDuplicateTransactions" id="checkForDuplicateTransactions" value="true">
 					<label for="checkForDuplicateTransactions">Duplicate Checking</label><br><br>
 					
-					Currency Code<br>
+					<label for="currencyCode">Currency Code</label><br>
 					<select name="currencyCode" class="currencyCode" id="currencyCode" readonly>
 						<option value="Usd">USD</option>
 						<option value="">CAN</option>
@@ -135,7 +135,7 @@ TODO:
 					Cashback Increment<br>
 					<input type=text class="cashbackAmountIncrement" id="cashbackAmountIncrement" value="default value"><br><br>
 					
-					Market Code<br>
+					<label for="autoReversalRetryLimit">Market Code</label><br>
 					<select name="market_code" class="autoReversalRetryLimit" id="autoReversalRetryLimit">
 						<option value="eCommerce">eCommerce</option>
 						<option value="Retail">Retail</option>
@@ -174,7 +174,7 @@ TODO:
 					Lane ID<br>
 					<input type=text class="laneId" id="laneId" value="default value"><br><br>
 					
-					Terminal Type<br>					
+					<label for="terminalType">Terminal Type</label><br>					
 					<select name="terminalType" class="terminalType" id="terminalType">
 						<option value="Unknown">Unknown</option>
 						<option value="PointOfSale">Point Of Sale</option>
@@ -184,7 +184,7 @@ TODO:
 						<option value="Atm">ATM</option>
 					</select><br><br>
 					
-					Driver<br>
+					<label for="pinpad_driver">Driver</label><br>
 					<select name="pinpad_driver" class="driver" id="pinpad_driver">
 						<option value="Null">None</option>
 						<option value="VeriFoneXpi">VeriFoneXpi</option>
@@ -201,7 +201,7 @@ TODO:
 					Parity<br>
 					<input type=text class="parity" id="parity" value="default value"><br><br>
 					
-					Stop Bits<br>
+					<label for="stopBits">Stop Bits</label><br>
 					<select name="stopBits" class="stopBits" id="stopBits">
 						<option value="None">0</option>
 						<option value="One">1</option>
@@ -209,14 +209,14 @@ TODO:
 						<option value="Two">2</option>
 					</select><br><br>
 					
-					Handshake<br>
+					<label for="handshake">Handshake</label><br>
 					<select name="handshake" class="handshake" id="handshake">
 						<option value="None">None</option>
 						<option value="RequestToSend">RequestToSend</option>
 						<option value="XonXoff">XonXoff</option>
 					</select><br><br>
 					
-					BAUD Rate<br>
+					<label for="baudRate">BAUD Rate</label><br>
 					<select name="baudRate" class="baudRate" id="baudRate">
 						<option value="75">75</option>
 						<option value="110">110</option>
