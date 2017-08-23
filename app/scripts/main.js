@@ -50,14 +50,15 @@ function parseXML(xmlinput) {
                 var child = field.children[i];
                 if (child.value == value) {
                     field.value = value.toString();
+                    break;
                 }
             }
-            var label = field.nextElementSibling;
+            var label = field.previousElementSibling.previousElementSibling;
             label.style.backgroundColor = "White";
         }
         catch (err) {
             var ignore = err;
-            var label = field.nextElementSibling;
+            var label = field.previousElementSibling.previousElementSibling;
             label.style.backgroundColor = "Red";
         }
     });
