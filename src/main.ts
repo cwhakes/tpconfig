@@ -59,19 +59,21 @@ function parseXML(xmlinput: String) {
   });
 
   paths_dropdowns().split(" ").filter(checkEmpty).forEach( function(path) {
-    var checkpoints = path.trim().split("/");
-    var element_name = checkpoints[checkpoints.length - 1];
-    var field = <HTMLInputElement> document.getElementById(element_name);
-
+    //var checkpoints = path.trim().split("/");
+    //var element_name = checkpoints[checkpoints.length - 1];
+    //var field = <HTMLInputElement> document.getElementById(element_name);
+    var field = <HTMLInputElement> document.getElementById("host_driver");
 
 
     try {
-      field.checked = <boolean> toBool(get_value(tripos, path));
+      var value = <String> get_value(tripos, path);
 
-      for (var i = 0; i < field.children.length; i++) {
-        var child = field.children[i];
-        if child.value ==
-
+      for (var i = 0; i <= field.children.length; i++) {
+        var child = <HTMLInputElement> field.children[i];
+        if (child.value == value) {
+          field.value = value.toString();
+        }
+      }
       var label = <HTMLElement> field.nextElementSibling;
       label.style.backgroundColor = "White";
     } catch(err) {
@@ -80,6 +82,7 @@ function parseXML(xmlinput: String) {
       label.style.backgroundColor = "Red";
     }
   });
+
 }
 
 function toBool(str: String) {

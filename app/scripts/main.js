@@ -43,26 +43,23 @@ function parseXML(xmlinput) {
         }
     });
     paths_dropdowns().split(" ").filter(checkEmpty).forEach(function (path) {
-        var checkpoints = path.trim().split("/");
-        var element_name = checkpoints[checkpoints.length - 1];
-        var field = document.getElementById(element_name);
+        var field = document.getElementById("host_driver");
         try {
-            field.checked = toBool(get_value(tripos, path));
-            for (var i = 0; i < field.children.length; i++) {
+            var value = get_value(tripos, path);
+            for (var i = 0; i <= field.children.length; i++) {
                 var child = field.children[i];
-                if (child.value ==
-                )
-                    var label = field.nextElementSibling;
-                label.style.backgroundColor = "White";
+                if (child.value == value) {
+                    field.value = value.toString();
+                }
             }
-            try { }
-            catch (err) {
-                var ignore = err;
-                var label = field.nextElementSibling;
-                label.style.backgroundColor = "Red";
-            }
+            var label = field.nextElementSibling;
+            label.style.backgroundColor = "White";
         }
-        finally { }
+        catch (err) {
+            var ignore = err;
+            var label = field.nextElementSibling;
+            label.style.backgroundColor = "Red";
+        }
     });
 }
 function toBool(str) {
