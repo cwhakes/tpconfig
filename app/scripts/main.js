@@ -1,5 +1,8 @@
-function importXml() {
+function importWrapper() {
     var myfile = document.getElementById("myFile");
+    importXml(myfile);
+}
+function importXml(myfile) {
     var x = myfile.files[0];
     var fr = new FileReader();
     fr.onload = function (e) {

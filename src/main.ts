@@ -1,7 +1,12 @@
 
+function importWrapper() {
+  var myfile = <HTMLInputElement> document.getElementById("myFile");
+  importXml(myfile);
+}
+
 //imports xml to string
-function importXml() {
-    var myfile = <HTMLInputElement> document.getElementById("myFile");
+function importXml(myfile: HTMLInputElement) {
+
     var x = myfile.files[0];
     var fr = new FileReader();
     fr.onload = function(e){
