@@ -72,8 +72,8 @@ TODO:
 				All fields are modifiable except Allowed Origins, no masking.-->
 				<fieldset>
 					<legend>Application</legend>
-					Test Mode 
-					<input type="checkbox" class="testMode" id="testMode" value="true"><br><br>
+					<input type="checkbox" class="testMode" id="testMode" value="true">
+					<label for="testMode">Test Mode</label><br><br>
 					
 					Pin Pad Idle Message<br>
 					<input type=text class="pinPadIdleMessage" id="pinPadIdleMessage" value="default value"><br><br>
@@ -88,18 +88,18 @@ TODO:
 				All fields are modifiable except partial approvals and signature format, no masking.-->
 				<fieldset>
 					<legend>Transaction</legend>
-					Partial Approvals 
-					<input type="checkbox" class="allowPartialApprovals" id="allowPartialApprovals" value="true"><br><br>
+					<input type="checkbox" class="allowPartialApprovals" id="allowPartialApprovals" value="true">
+					<label for="allowPartialApprovals">Partial Approvals</label><br><br>
 					
-					Confirm Original Amount 
-					<input type="checkbox" class="confirmOriginalAmount" id="confirmOriginalAmount" value="true"><br><br>
+					<input type="checkbox" class="confirmOriginalAmount" id="confirmOriginalAmount" value="true">
+					<label for="confirmOriginalAmount">Confirm Original Amount</label><br><br>
 					
 					AVS Entry Mode<br>
 					<input type=text class="creditAvsEntryCondition" id="creditAvsEntryCondition" value="default value"><br><br>
-					
-					Duplicate Checking
-					<input type="checkbox" class="checkForDuplicateTransactions" id="checkForDuplicateTransactions" value="true"><br><br>
 
+					<input type="checkbox" class="checkForDuplicateTransactions" id="checkForDuplicateTransactions" value="true">
+					<label for="checkForDuplicateTransactions">Duplicate Checking</label><br><br>
+					
 					Currency Code<br>
 					<select name="currencyCode" class="currencyCode" id="currencyCode" readonly>
 						<option value="Usd">USD</option>
@@ -107,26 +107,26 @@ TODO:
 					</select>
 					<br><br>
 					
-					Cashback Allow
-					<input type="checkbox" class="isCashbackAllowed" id="isCashbackAllowed" value="true"><br><br>
+					<input type="checkbox" class="isCashbackAllowed" id="isCashbackAllowed" value="true">
+					<label for="isCashbackAllowed">Cashback Allow</label><br><br>
 					
-					Debit Support
-					<input type="checkbox" class="isDebitSupported" id="isDebitSupported" value="true"><br><br>
+					<input type="checkbox" class="isDebitSupported" id="isDebitSupported" value="true">
+					<label for="isDebitSupported">Debit Support</label><br><br>
 					
-					EMV Support
-					<input type="checkbox" class="isEmvSupported" id="isEmvSupported" value="true"><br><br>
+					<input type="checkbox" class="isEmvSupported" id="isEmvSupported" value="true">
+					<label for="isEmvSupported">EMV Support</label><br><br>
 					
-					Gift Support
-					<input type="checkbox" class="isGiftSupported" id="isGiftSupported" value="true"><br><br>
+					<input type="checkbox" class="isGiftSupported" id="isGiftSupported" value="true">
+					<label for="isGiftSupported">Gift Support</label><br><br>
 					
-					Confirm Convenience Fee
-					<input type="checkbox" class="confirmConvenienceFeeAmount" id="confirmConvenienceFeeAmount" value="true"><br><br>
+					<input type="checkbox" class="confirmConvenienceFeeAmount" id="confirmConvenienceFeeAmount" value="true">
+					<label for="confirmConvenienceFeeAmount">Confirm Convenience Fee</label><br><br>
 					
 					<input type="checkbox" class="isTipAllowed" id="isTipAllowed" value="true" checked>
 					<label for="isTipAllowed">Tip Allow</label><br><br>
 					
-					Healthcare Support
-					<input type="checkbox" class="isHealthcareSupported" id="isHealthcareSupported" value="true"><br><br>
+					<input type="checkbox" class="isHealthcareSupported" id="isHealthcareSupported" value="true">
+					<label for="isHealthcareSupported">Healthcare Support</label><br><br>
 
 					<!-- possible multi-line box-->
 					Cashback Options (separated by commas)<br>
@@ -158,8 +158,8 @@ TODO:
 					Signature Format
 					<input type=text class="signatureFormat" id="signatureFormat" value="PointsLittleEndian" readonly>
 					
-					EMV Fallback Allow
-					<input type="checkbox" class="emvFallbackAllowed" id="emvFallbackAllowed" value="true" checked readonly><br><br>
+					<input type="checkbox" class="emvFallbackAllowed" id="emvFallbackAllowed" value="true" checked readonly>
+					<label for="emvFallbackAllowed">EMV Fallback Allow</label><br><br>
 				</fieldset>
 				
 				<br>
@@ -231,11 +231,11 @@ TODO:
 						<option value="115200">115200</option>
 					</select><br><br>
 					
-					Manual Entry
-					<input type="checkbox" class="isManualEntryAllowed" id="isManualEntryAllowed" value="true"><br><br>
+					<input type="checkbox" class="isManualEntryAllowed" id="isManualEntryAllowed" value="true">
+					<label for="isManualEntryAllowed">Manual Entry</label><br><br>
 					
-					Contactless
-					<input type="checkbox" class="isContactlessMsdEntryAllowed" id="isContactlessMsdEntryAllowed" value="true"><br><br>
+					<input type="checkbox" class="isContactlessMsdEntryAllowed" id="isContactlessMsdEntryAllowed" value="true">
+					<label for="isContactlessMsdEntryAllowed">Contactless</label><br><br>
 					
 					Terminal ID<br>
 					<input type=text class="terminalId" id="terminalId" value="default value"><br><br>

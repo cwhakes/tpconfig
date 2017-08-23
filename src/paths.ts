@@ -32,27 +32,26 @@ lanes/serialLane/host/terminalId \
 
 function paths_checkboxes():String {
   return " \
-  transaction/isTipAllowed \
+transaction/isTipAllowed \
+application/testMode \
+transaction/allowPartialApprovals \
+transaction/confirmOriginalAmount \
+transaction/checkForDuplicateTransactions \
+transaction/isCashbackAllowed \
+transaction/isDebitSupported \
+transaction/isGiftSupported \
+transaction/confirmConvenienceFeeAmount \
+transaction/isHealthcareSupported \
+lanes/serialLane/pinpad/isManualEntryAllowed \
+lanes/serialLane/pinpad/isContactlessMsdEntryAllowed \
   ".trim();
 }
 /*
-	host/driver \
-	application/testMode \
-	transaction/allowPartialApprovals \
-	transaction/confirmOriginalAmount \
-	transaction/checkForDuplicateTransactions \
-	transaction/currencyCode \
-	transaction/isCashbackAllowed
-	transaction/isDebitSupported \
-	transaction/isGiftSupported \
-	transaction/confirmConvenienceFeeAmount \
-	transaction/isTipAllowed \
-	transaction/isHealthcareSupported \
-	transaction/marketCode \
-	lanes/serialLane/pinpad/terminalType \
-	lanes/serialLane/pinpad/driver
-	lanes/serialLane/pinpad/handshake \
-	lanes/serialLane/pinpad/baudRate \
-	lanes/serialLane/pinpad/isManualEntryAllowed \
-	lanes/serialLane/pinpad/isContactlessMsdEntryAllowed \
+host/driver \
+transaction/currencyCode \
+transaction/marketCode \
+lanes/serialLane/pinpad/terminalType \
+lanes/serialLane/pinpad/driver
+lanes/serialLane/pinpad/handshake \
+lanes/serialLane/pinpad/baudRate \
 */
