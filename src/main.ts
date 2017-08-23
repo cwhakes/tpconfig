@@ -63,12 +63,15 @@ function parseXML(xmlinput: String) {
     var element_name = checkpoints[checkpoints.length - 1];
     var field = <HTMLInputElement> document.getElementById(element_name);
 
-    for (var i = 0; i < field.children.length; i++) {
-      var child = field.children[i];
-      if child.value ==
+
 
     try {
       field.checked = <boolean> toBool(get_value(tripos, path));
+
+      for (var i = 0; i < field.children.length; i++) {
+        var child = field.children[i];
+        if child.value ==
+
       var label = <HTMLElement> field.nextElementSibling;
       label.style.backgroundColor = "White";
     } catch(err) {

@@ -46,21 +46,23 @@ function parseXML(xmlinput) {
         var checkpoints = path.trim().split("/");
         var element_name = checkpoints[checkpoints.length - 1];
         var field = document.getElementById(element_name);
-        for (var i = 0; i < field.children.length; i++) {
-            var child = field.children[i];
-            if (child.value ==
-            )
-                try {
-                    field.checked = toBool(get_value(tripos, path));
+        try {
+            field.checked = toBool(get_value(tripos, path));
+            for (var i = 0; i < field.children.length; i++) {
+                var child = field.children[i];
+                if (child.value ==
+                )
                     var label = field.nextElementSibling;
-                    label.style.backgroundColor = "White";
-                }
-                catch (err) {
-                    var ignore = err;
-                    var label = field.nextElementSibling;
-                    label.style.backgroundColor = "Red";
-                }
+                label.style.backgroundColor = "White";
+            }
+            try { }
+            catch (err) {
+                var ignore = err;
+                var label = field.nextElementSibling;
+                label.style.backgroundColor = "Red";
+            }
         }
+        finally { }
     });
 }
 function toBool(str) {
@@ -86,8 +88,6 @@ function get_value(tripos, path) {
         location = location.getElementsByTagName(cp.trim())[0];
     });
     return location.textContent;
-}
-function exportXml() {
 }
 function paths() {
     return " \
@@ -167,5 +167,16 @@ function validateStringInt(self) {
 function validateBool(self) {
     var label = self.nextElementSibling;
     label.style.backgroundColor = "White";
+}
+var xmlDoc = new ActiveXObject("Microsoft.XMLDOM");
+var fso = new ActiveXObject("Scription.FileSystemObject");
+var FILENAME = 'test.xml';
+function exportXml() {
+    var file = fso.CreateTextFile(FILENAME, true);
+    file.WriteLine('<?xml version="1.0" encoding="utf-8"?>\n');
+    file.WriteLine('<tripos xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">\n');
+    file.WriteLine('<!-- This is a comment-->\n');
+    file.WriteLine('</tripos>');
+    file.Close();
 }
 //# sourceMappingURL=main.js.map
