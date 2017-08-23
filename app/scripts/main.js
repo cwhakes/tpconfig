@@ -16,22 +16,23 @@ function parseXML(xmlinput) {
     var tripos = the_dom.getElementsByTagName('tripos')[0];
     paths().split(" ").filter(checkEmpty).forEach(function (path) { importTextbox(tripos, path); });
     paths_checkboxes().split(" ").filter(checkEmpty).forEach(function (path) { importCheckbox(tripos, path); });
+    importDropdownUnique(tripos, "host/driver", "host_driver");
     paths_dropdowns().split(" ").filter(checkEmpty).forEach(function (path) { importDropdown(tripos, path); });
-}
-function toBool(str) {
-    if (str.toLowerCase() == "false") {
-        return false;
+    function toBool(str) {
+        if (str.toLowerCase() == "false") {
+            return false;
+        }
+        else if (str.toLowerCase() == "true") {
+            return true;
+        }
+        else {
+            throw "typeErr";
+        }
     }
-    else if (str.toLowerCase() == "true") {
-        return true;
-    }
-    else {
-        throw "typeErr";
-    }
-}
-function checkEmpty(str) {
-    if (str.trim().length > 0) {
-        return str;
+    function checkEmpty(str) {
+        if (str.trim().length > 0) {
+            return str;
+        }
     }
 }
 function paths() {
@@ -82,7 +83,7 @@ lanes/serialLane/pinpad/isContactlessMsdEntryAllowed \
 }
 function paths_dropdowns() {
     return " \
-  host/driver \
+   \
   ".trim();
 }
 function validateInput(event) {
@@ -177,6 +178,26 @@ function importCheckbox(root, path) {
 }
 function importDropdown(root, path) {
     var field = document.getElementById("host_driver");
+    try {
+        var value = getValue(root, path);
+        for (var i = 0; i <= field.children.length; i++) {
+            var child = field.children[i];
+            if (child.value == value) {
+                field.value = value.toString();
+                break;
+            }
+        }
+        var label = field.previousElementSibling.previousElementSibling;
+        label.style.backgroundColor = "White";
+    }
+    catch (err) {
+        var ignore = err;
+        var label = field.previousElementSibling.previousElementSibling;
+        label.style.backgroundColor = "Red";
+    }
+}
+function importDropdownUnique(root, path, id) {
+    var field = document.getElementById(id.toString());
     try {
         var value = getValue(root, path);
         for (var i = 0; i <= field.children.length; i++) {

@@ -49,7 +49,7 @@ lanes/serialLane/pinpad/isContactlessMsdEntryAllowed \
 
 function paths_dropdowns():String {
   return " \
-  host/driver \
+   \
   ".trim();
 }
 /*

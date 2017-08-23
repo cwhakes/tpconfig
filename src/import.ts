@@ -71,3 +71,26 @@ function importDropdown(root: Element, path:String) {
     label.style.backgroundColor = "Red";
   }
 }
+
+function importDropdownUnique(root: Element, path:String, id:String) {
+  var field = <HTMLInputElement> document.getElementById(id.toString());
+
+
+  try {
+    var value = <String> getValue(root, path);
+
+    for (var i = 0; i <= field.children.length; i++) {
+      var child = <HTMLInputElement> field.children[i];
+      if (child.value == value) {
+        field.value = value.toString();
+        break;
+      }
+    }
+    var label = <HTMLElement> field.previousElementSibling.previousElementSibling;
+    label.style.backgroundColor = "White";
+  } catch(err) {
+    var ignore = err;
+    var label = <HTMLElement> field.previousElementSibling.previousElementSibling;
+    label.style.backgroundColor = "Red";
+  }
+}
