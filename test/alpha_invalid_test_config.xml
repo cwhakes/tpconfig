@@ -1,17 +1,3 @@
-<!-- Invalid fields: 
-listeningPort has an alpha character
-AcceptorID has an alpha character
-AccountID has an alpha character
-autoReversalRetryLimit has an alpha character/is a string
-cashbackSelections has an alpha character
-cashbackAmountIncrement has an alpha character
-maximumCashbackAmount has an alpha character
-creditSaleSigantureThresholdAmount has an alpha
-laneID has alpha character
-baudRate has alpha character
-terminalID has alpha character
--->
-
 <?xml version="1.0" encoding="utf-8"?>
 <tripos xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <!--The version of the config file.-->

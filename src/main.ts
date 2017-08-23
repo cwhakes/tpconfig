@@ -48,7 +48,8 @@ function parseXML(xmlinput: String) {
       field.checked = <boolean> toBool(get_value(tripos, path));
     } catch(err) {
       var ignore = err;
-      field.style.backgroundColor = "Red";
+      var label = <HTMLElement> field.nextElementSibling;
+      label.style.backgroundColor = "Red";
     }
   });
 }

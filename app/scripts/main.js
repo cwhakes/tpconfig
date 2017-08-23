@@ -33,7 +33,8 @@ function parseXML(xmlinput) {
         }
         catch (err) {
             var ignore = err;
-            field.style.backgroundColor = "Red";
+            var label = field.nextElementSibling;
+            label.style.backgroundColor = "Red";
         }
     });
 }
@@ -93,7 +94,18 @@ lanes/serialLane/host/terminalId \
 }
 function paths_checkboxes() {
     return " \
-  transaction/isTipAllowed \
+transaction/isTipAllowed \
+application/testMode \
+transaction/allowPartialApprovals \
+transaction/confirmOriginalAmount \
+transaction/checkForDuplicateTransactions \
+transaction/isCashbackAllowed \
+transaction/isDebitSupported \
+transaction/isGiftSupported \
+transaction/confirmConvenienceFeeAmount \
+transaction/isHealthcareSupported \
+lanes/serialLane/pinpad/isManualEntryAllowed \
+lanes/serialLane/pinpad/isContactlessMsdEntryAllowed \
   ".trim();
 }
 function validate_developerSecret(self) {
