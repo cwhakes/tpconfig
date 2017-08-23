@@ -1,6 +1,6 @@
 
 //imports xml to string
-function myFunction() {
+function importXml() {
     var myfile = <HTMLInputElement> document.getElementById("myFile");
     var x = myfile.files[0];
     var fr = new FileReader();
@@ -10,7 +10,6 @@ function myFunction() {
       parseXML(fr.result);
     };
     fr.readAsText(x);
-
 }
 
 //parses xml and put into fields
@@ -87,4 +86,8 @@ function get_value(tripos:Element, path: String): String {
   });
 
   return location.textContent;
+}
+
+function exportXml() {
+	//document.write("Hello World!");
 }

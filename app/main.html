@@ -18,8 +18,7 @@ TODO:
 
 		<h3>TriPOS Config File Tool</h3>
 		<p>Browse to select your configuartion file, then click "Import".</p>
-		<input type="file" class="myFile" id="myFile" oninput="myFunction()">
-		<button onclick="myFunction()">Import</button>
+		<input type="file" class="myFile" id="myFile" oninput="importXml()">
 
 		<!-- The form will be changing based on input -->
 		<form>
@@ -253,13 +252,8 @@ TODO:
 
 				<br>
 
-				<!-- validate button will be using a popup alert for testing purposes,
-				then will use "validate()" function
-				Export button will export the set configuration settings into a new XML document
-
-				<button onclick="alert('Valid!')">Validate</button>
+				<!-- Export button will export the set configuration settings into a new XML document-->
 				<button onclick="alert('Exported!')">Export</button>
-				-->
 
 			</fieldset>
 		</form>
