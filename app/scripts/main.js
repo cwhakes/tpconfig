@@ -5,18 +5,28 @@ function importWrapper() {
 function importXml(myfile) {
     var x = myfile.files[0];
     var fr = new FileReader();
+    var inputButton = document.getElementById("inputButton");
+    if (typeof (sessionStorage) == "undefined") {
+        alert("No sessionStorage");
+    }
+    inputButton.disabled = true;
     fr.onload = function (e) {
-        parseXML(fr.result);
+        window.sessionStorage.the_dom = fr.result;
+        parseXml();
+        inputButton.disabled = false;
     };
     fr.readAsText(x);
 }
-function parseXML(xmlinput) {
+function parseXml() {
     var parser = new DOMParser();
+    var xmlinput = window.sessionStorage.the_dom;
     var the_dom = parser.parseFromString(xmlinput.toString(), "application/xml");
+    sessionStorage.setItem("the_dom", xmlinput.toString());
     var tripos = the_dom.getElementsByTagName('tripos')[0];
     paths().split(" ").filter(checkEmpty).forEach(function (path) { importTextbox(tripos, path); });
     paths_checkboxes().split(" ").filter(checkEmpty).forEach(function (path) { importCheckbox(tripos, path); });
     importDropdownUnique(tripos, "host/driver", "host_driver");
+    importDropdownUnique(tripos, "lanes/serialLane/pinpad/driver", "pinpad_driver");
     paths_dropdowns().split(" ").filter(checkEmpty).forEach(function (path) { importDropdown(tripos, path); });
 }
 function toBool(str) {
@@ -83,7 +93,11 @@ lanes/serialLane/pinpad/isContactlessMsdEntryAllowed \
 }
 function paths_dropdowns() {
     return " \
-   \
+transaction/currencyCode \
+transaction/marketCode \
+lanes/serialLane/pinpad/terminalType \
+lanes/serialLane/pinpad/handshake \
+lanes/serialLane/pinpad/baudRate \
   ".trim();
 }
 function validateInput(event) {
@@ -184,7 +198,7 @@ function importCheckbox(root, path) {
     }
 }
 function importDropdown(root, path) {
-    var field = document.getElementById("host_driver");
+    var field = getField(path);
     try {
         var value = getValue(root, path);
         for (var i = 0; i <= field.children.length; i++) {

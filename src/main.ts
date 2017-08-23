@@ -9,19 +9,33 @@ function importXml(myfile: HTMLInputElement) {
 
     var x = myfile.files[0];
     var fr = new FileReader();
+
+    var inputButton = <HTMLInputElement> document.getElementById("inputButton");
+
+    if (typeof(sessionStorage) == "undefined") {
+      alert("No sessionStorage");
+    }
+
+    inputButton.disabled = true;
+
     fr.onload = function(e){
-      //var text1 = <HTMLInputElement> document.getElementById("text1");
-      //text1.value = fr.result;
-      parseXML(fr.result);
+      window.sessionStorage.the_dom = fr.result;
+      //parseXml(fr.result);
+      parseXml()
+      inputButton.disabled = false;
     };
     fr.readAsText(x);
 }
 
 //parses xml and put into fields
-function parseXML(xmlinput: String) {
+function parseXml() {
 
   var parser = new DOMParser();
+  var xmlinput: String = window.sessionStorage.the_dom;
   var the_dom = parser.parseFromString(xmlinput.toString(), "application/xml");
+
+  sessionStorage.setItem("the_dom", xmlinput.toString());
+
   var tripos = the_dom.getElementsByTagName('tripos')[0];
 
   paths().split(" ").filter(checkEmpty).forEach( function(path) {importTextbox(tripos, path)});
