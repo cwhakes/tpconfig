@@ -68,7 +68,7 @@
         <!--If the PIN pad is not connected via IP, name of serial device to which the PIN pad is attached (e.g. COM1, /dev/tty1, etc).-->
         <comPort>COM9999</comPort>
         <!--If the PIN pad is connected via serial device, the data bit setting.-->
-        <dataBits>8</dataBits>
+        <dataBits>8a</dataBits>
         <!--If the PIN pad is connected via serial device, the parity setting.-->
         <parity>None</parity>
         <!--If the PIN pad is connected via serial device, the stop bits setting: None, One, OnePointFive, Two.-->
@@ -76,7 +76,7 @@
         <!--If the PIN pad is connected via serial device, the handshake setting: 'None', 'RequestToSend', 'XonXoff'-->
         <handshake>None</handshake>
         <!--Baud rate of serial communications. Valid values are: 75, 110, 300, 1200, 2400, 4800, 9600, 19200, 38400, 57600, 115200.-->
-        <baudRate>5760a</baudRate>
+        <baudRate>5760</baudRate>
         <!--Set to true to allow manual entry of card account numbers on the PIN pad.-->
         <isManualEntryAllowed>true</isManualEntryAllowed>
         <!--Set to true to allow contactless entry.-->

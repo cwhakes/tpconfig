@@ -25,14 +25,14 @@ TODO:
 		<form>
 			<fieldset>
 				Config File Version <br>
-				<input type=text class="configVersion" id="configVersion" value="" readonly></input><br><br>
+				<input type=text class="configVersion" id="configVersion" value="" data-callback="validateInt(e);" readonly></input><br><br>
 
 				<!-- developer fieldset is for developer information.
 				Not modifiable, may be masked for security purposes.-->
 				<fieldset>
 					<legend>Developer</legend>
 					Developer Key <br>
-					<input type=text class="developerKey" id="developerKey" value="default value" readonly><br><br>
+					<input type=text class="developerKey" id="developerKey" value="default value" data-callback="validateHex(e);" readonly><br><br>
 
 					Developer Secret <br>
 					<input type=text class="developerSecret" id="developerSecret" value="default value" data-callback="validateHex(e);">
@@ -45,7 +45,7 @@ TODO:
 				<fieldset>
 					<legend>Server and Host</legend>
 					Listening Port<br>
-					<input type=text class="listeningPort" id="listeningPort" value="default value"><br><br>
+					<input type=text class="listeningPort" id="listeningPort" value="default value" data-callback="validateInt(e);"><br><br>
 
 					<label for="host_driver">Driver</label><br>
 					<select name="driver" class="driver" id="host_driver">
@@ -54,16 +54,16 @@ TODO:
 					</select><br><br>
 
 					Acceptor ID<br>
-					<input type=text class="acceptorId" id="acceptorId" value="default value"><br><br>
+					<input type=text class="acceptorId" id="acceptorId" value="default value" data-callback="validateInt(e);"><br><br>
 
 					Account ID<br>
-					<input type=text class="accountId" id="accountId" value="default value"><br><br>
+					<input type=text class="accountId" id="accountId" value="default value" data-callback="validateInt(e);"><br><br>
 
 					Account Token<br>
-					<input type=text class="accountToken" id="accountToken" value="default value"><br><br>
+					<input type=text class="accountToken" id="accountToken" value="default value" data-callback="validateHex(e);"><br><br>
 
 					Auto Reversal Retry Limit
-					<input type=text class="autoReversalRetryLimit" id="autoReversalRetryLimit" value="default value">
+					<input type=text class="autoReversalRetryLimit" id="autoReversalRetryLimit" value="default value" data-callback="validateInt(e);">
 				</fieldset>
 
 				<br>
@@ -72,7 +72,7 @@ TODO:
 				All fields are modifiable except Allowed Origins, no masking.-->
 				<fieldset>
 					<legend>Application</legend>
-					<input type="checkbox" class="testMode" id="testMode" value="true">
+					<input type="checkbox" class="testMode" id="testMode" value="true" data-callback="validateBool(e);">
 					<label for="testMode">Test Mode</label><br><br>
 
 					Pin Pad Idle Message<br>
@@ -85,19 +85,19 @@ TODO:
 				<br>
 
 				<!-- transaction fieldset is for the details of the transaction process.
-				All fields are modifiable except partial approvals and signature format, no masking.-->
+				All fields are modifiable except partial approvals, avs Entry, and signature format, no masking.-->
 				<fieldset>
 					<legend>Transaction</legend>
-					<input type="checkbox" class="allowPartialApprovals" id="allowPartialApprovals" value="true">
+					<input type="checkbox" class="allowPartialApprovals" id="allowPartialApprovals" value="true" data-callback="validateBool(e);">
 					<label for="allowPartialApprovals">Partial Approvals</label><br><br>
 
-					<input type="checkbox" class="confirmOriginalAmount" id="confirmOriginalAmount" value="true">
+					<input type="checkbox" class="confirmOriginalAmount" id="confirmOriginalAmount" value="true" data-callback="validateBool(e);">
 					<label for="confirmOriginalAmount">Confirm Original Amount</label><br><br>
 
 					AVS Entry Mode<br>
-					<input type=text class="creditAvsEntryCondition" id="creditAvsEntryCondition" value="default value"><br><br>
+					<input type=text class="creditAvsEntryCondition" id="creditAvsEntryCondition" value="Keyed" readonly><br><br>
 
-					<input type="checkbox" class="checkForDuplicateTransactions" id="checkForDuplicateTransactions" value="true">
+					<input type="checkbox" class="checkForDuplicateTransactions" id="checkForDuplicateTransactions" value="true" data-callback="validateBool(e);">
 					<label for="checkForDuplicateTransactions">Duplicate Checking</label><br><br>
 
 					<label for="currencyCode">Currency Code</label><br>
@@ -107,33 +107,33 @@ TODO:
 					</select>
 					<br><br>
 
-					<input type="checkbox" class="isCashbackAllowed" id="isCashbackAllowed" value="true">
+					<input type="checkbox" class="isCashbackAllowed" id="isCashbackAllowed" value="true" data-callback="validateBool(e);">
 					<label for="isCashbackAllowed">Cashback Allow</label><br><br>
 
-					<input type="checkbox" class="isDebitSupported" id="isDebitSupported" value="true">
+					<input type="checkbox" class="isDebitSupported" id="isDebitSupported" value="true" data-callback="validateBool(e);">
 					<label for="isDebitSupported">Debit Support</label><br><br>
 
-					<input type="checkbox" class="isEmvSupported" id="isEmvSupported" value="true">
+					<input type="checkbox" class="isEmvSupported" id="isEmvSupported" value="true" data-callback="validateBool(e);">
 					<label for="isEmvSupported">EMV Support</label><br><br>
 
-					<input type="checkbox" class="isGiftSupported" id="isGiftSupported" value="true">
+					<input type="checkbox" class="isGiftSupported" id="isGiftSupported" value="true" data-callback="validateBool(e);">
 					<label for="isGiftSupported">Gift Support</label><br><br>
 
-					<input type="checkbox" class="confirmConvenienceFeeAmount" id="confirmConvenienceFeeAmount" value="true">
+					<input type="checkbox" class="confirmConvenienceFeeAmount" id="confirmConvenienceFeeAmount" value="true" data-callback="validateBool(e);">
 					<label for="confirmConvenienceFeeAmount">Confirm Convenience Fee</label><br><br>
 
-					<input type="checkbox" class="isTipAllowed" id="isTipAllowed" value="true" checked>
+					<input type="checkbox" class="isTipAllowed" id="isTipAllowed" value="true" data-callback="validateBool(e);">
 					<label for="isTipAllowed">Tip Allow</label><br><br>
 
-					<input type="checkbox" class="isHealthcareSupported" id="isHealthcareSupported" value="true">
+					<input type="checkbox" class="isHealthcareSupported" id="isHealthcareSupported" value="true" data-callback="validateBool(e);">
 					<label for="isHealthcareSupported">Healthcare Support</label><br><br>
 
 					<!-- possible multi-line box-->
 					Cashback Options (separated by commas)<br>
-					<input type=text class="cashbackSelections" id="cashbackSelections" value="default value"><br><br>
+					<input type=text class="cashbackSelections" id="cashbackSelections" value="default value" data-callback="validateStringInt(e);"><br><br>
 
 					Cashback Increment<br>
-					<input type=text class="cashbackAmountIncrement" id="cashbackAmountIncrement" value="default value"><br><br>
+					<input type=text class="cashbackAmountIncrement" id="cashbackAmountIncrement" value="default value" data-callback="validateStringInt(e);"><br><br>
 
 					<label for="autoReversalRetryLimit">Market Code</label><br>
 					<select name="market_code" class="autoReversalRetryLimit" id="autoReversalRetryLimit">
@@ -143,22 +143,22 @@ TODO:
 					</select><br><br>
 
 					Maximum Cashback<br>
-					<input type=text class="maximumCashbackAmount" id="maximumCashbackAmount" value="default value"><br><br>
+					<input type=text class="maximumCashbackAmount" id="maximumCashbackAmount" value="default value" data-callback="validateInt(e);"><br><br>
 
 					<!-- possible multi-line box-->
 					Tip Options <a href title="Dollar amounts or percentages (i.e. 10%) separated by commas">?</a><br>
-					<input type=text class="tipSelections" id="tipSelections" value="default value"><br><br>
+					<input type=text class="tipSelections" id="tipSelections" value="default value" data-callback="validateStringInt(e);"><br><br>
 
 					Debit Surcharge<br>
-					<input type=text class="debitSurcharge" id="debitSurcharge" value="default value"><br><br>
+					<input type=text class="debitSurcharge" id="debitSurcharge" value="default value" data-callback="validateInt(e);"><br><br>
 
 					Credit Signature Threshold<br>
-					<input type=text class="creditSaleSignatureThresholdAmount" id="creditSaleSignatureThresholdAmount" value="default value"><br><br>
+					<input type=text class="creditSaleSignatureThresholdAmount" id="creditSaleSignatureThresholdAmount" value="default value" data-callback="validateInt(e);"><br><br>
 
 					Signature Format
 					<input type=text class="signatureFormat" id="signatureFormat" value="PointsLittleEndian" readonly>
 
-					<input type="checkbox" class="emvFallbackAllowed" id="emvFallbackAllowed" value="true" checked readonly>
+					<input type="checkbox" class="emvFallbackAllowed" id="emvFallbackAllowed" value="true" data-callback="validateBool(e);">
 					<label for="emvFallbackAllowed">EMV Fallback Allow</label><br><br>
 				</fieldset>
 
@@ -172,7 +172,7 @@ TODO:
 					<input type=text class="description" id="description" value="default value"><br><br>
 
 					Lane ID<br>
-					<input type=text class="laneId" id="laneId" value="default value"><br><br>
+					<input type=text class="laneId" id="laneId" value="default value" data-callback="validateInt(e);"><br><br>
 
 					<label for="terminalType">Terminal Type</label><br>
 					<select name="terminalType" class="terminalType" id="terminalType">
@@ -193,10 +193,10 @@ TODO:
 					</select><br><br>
 
 					ComPort<br>
-					<input type=text class="comPort" id="comPort" value="default value"><br><br>
+					<input type=text class="comPort" id="comPort" value="default value" ><br><br>
 
 					Data Bits<br>
-					<input type=text class="dataBits" id="dataBits" value="default value"><br><br>
+					<input type=text class="dataBits" id="dataBits" value="default value" data-callback="validateInt(e);"><br><br>
 
 					Parity<br>
 					<input type=text class="parity" id="parity" value="default value"><br><br>
@@ -231,14 +231,14 @@ TODO:
 						<option value="115200">115200</option>
 					</select><br><br>
 
-					<input type="checkbox" class="isManualEntryAllowed" id="isManualEntryAllowed" value="true">
+					<input type="checkbox" class="isManualEntryAllowed" id="isManualEntryAllowed" value="true" data-callback="validateBool(e);">
 					<label for="isManualEntryAllowed">Manual Entry</label><br><br>
 
-					<input type="checkbox" class="isContactlessMsdEntryAllowed" id="isContactlessMsdEntryAllowed" value="true">
+					<input type="checkbox" class="isContactlessMsdEntryAllowed" id="isContactlessMsdEntryAllowed" value="true" data-callback="validateBool(e);">
 					<label for="isContactlessMsdEntryAllowed">Contactless</label><br><br>
 
 					Terminal ID<br>
-					<input type=text class="terminalId" id="terminalId" value="default value"><br><br>
+					<input type=text class="terminalId" id="terminalId" value="default value" data-callback="validateInt(e);"><br><br>
 
 					<!-- Added functionality: Add lanes to match the same config settings as default lane
 
