@@ -75,7 +75,6 @@ function importDropdown(root: Element, path:String) {
 function importDropdownUnique(root: Element, path:String, id:String) {
   var field = <HTMLInputElement> document.getElementById(id.toString());
 
-
   try {
     var value = <String> getValue(root, path);
 

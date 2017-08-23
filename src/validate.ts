@@ -47,5 +47,9 @@ function validateStringInt(self: HTMLInputElement): void {
 //validates boolean values
 function validateBool(self: HTMLElement): void {
   var label = <HTMLElement> self.nextElementSibling;
-  label.style.backgroundColor = "White";
+  label.style.backgroundColor = "white";
+}
+
+function validateNone(self: HTMLElement): void {
+  self.style.backgroundColor = "white";
 }

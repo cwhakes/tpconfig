@@ -120,7 +120,10 @@ function validateStringInt(self) {
 }
 function validateBool(self) {
     var label = self.nextElementSibling;
-    label.style.backgroundColor = "White";
+    label.style.backgroundColor = "white";
+}
+function validateNone(self) {
+    self.style.backgroundColor = "white";
 }
 var xmlDoc = new ActiveXObject("Microsoft.XMLDOM");
 var fso = new ActiveXObject("Scripting.FileSystemObject");
