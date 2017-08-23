@@ -120,7 +120,7 @@ function validateInput(event) {
 function validateHex(self) {
     var data = self.value.split("-").join("");
     var array = data.match("^[0-9a-fA-F]*$");
-    if (array != null) {
+    if (array != null && array[0].length > 0) {
         self.style.backgroundColor = "white";
     }
     else {
@@ -138,6 +138,7 @@ function validateInt(self) {
 function validateStringInt(self) {
 }
 function validateBool(self) {
-    self.style.backgroundColor = "white";
+    var label = self.nextElementSibling;
+    label.style.backgroundColor = "White";
 }
 //# sourceMappingURL=main.js.map
